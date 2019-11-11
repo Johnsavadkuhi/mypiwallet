@@ -60,9 +60,10 @@ function GetBlock() {
     return (
         <>
             <hr />
+            
             <div className="card">
                 <header className="card-header">
-                    <p className="card-header-title">
+                    <p className="card-header-title has-text-danger">
                         getBlock
                 </p>
 
@@ -81,7 +82,7 @@ function GetBlock() {
                             </div>
                         </div>
                         <button onClick={handleClick}
-                            className="button is-info is-small is-fullwidth" > Execute </button>
+                            className="button is-rounded is-info is-small is-fullwidth has-text-weight-bold" > Execute </button>
                     </div>
                 </div>
                 <div className="card-footer">
@@ -89,6 +90,7 @@ function GetBlock() {
                 </div>
 
             </div>
+        
         </>
     )
 
