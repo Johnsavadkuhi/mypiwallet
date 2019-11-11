@@ -3,31 +3,31 @@ import React, { useState } from 'react';
 function GetBlockNumber() {
 
     const requestBody = {
-        query : `
+        query: `
         query {
             getBlockNumber
         }
         `
-    } 
+    }
 
     const [blockNumber, setBlockNumber] = useState('');
-   
-    const handleClick = e =>{
-        e.preventDefault() ;
-        fetch("http://localhost:5001/graphql" , {
-            method:'POST',
-            body:JSON.stringify(requestBody),
-            headers : {
-                "Content-Type" : "application/json" 
+
+    const handleClick = e => {
+        e.preventDefault();
+        fetch("http://localhost:5001/graphql", {
+            method: 'POST',
+            body: JSON.stringify(requestBody),
+            headers: {
+                "Content-Type": "application/json"
             }
 
-        }).then(res=>{
+        }).then(res => {
             return res.json();
-        }).then(resData=>{
+        }).then(resData => {
             setBlockNumber(resData);
-        }).catch(error=>{
+        }).catch(error => {
             console.log(error);
-            throw error; 
+            throw error;
         })
     }
     return (
@@ -35,7 +35,7 @@ function GetBlockNumber() {
             <hr />
             <div className="card">
                 <header className="card-header">
-                    <p className="card-header-title">
+                    <p className="card-header-title has-text-danger	">
                         getBlockNumber
                 </p>
 
@@ -48,12 +48,12 @@ function GetBlockNumber() {
                 <div className="card-content">
                     <div className="content">
 
-                        <button onClick ={handleClick}
-                        className="button is-info is-small is-fullwidth" > Execute </button>
+                        <button onClick={handleClick}
+                            className="button is-rounded is-info is-small is-fullwidth has-text-weight-bold" > Execute </button>
                     </div>
                 </div>
                 <div className="card-footer">
-                    <pre>{JSON.stringify(blockNumber , null , 2 )}</pre>
+                    <pre>{JSON.stringify(blockNumber, null, 2)}</pre>
                 </div>
 
             </div>
