@@ -1,8 +1,10 @@
 import React from 'react';
 import '../style/main.scss'
-import GetBlockNumber from './block/GetBlockNumber'
-import GetBlock from './block/GetBlock'
+import Mnoparma from './methods_with_no_param' ; 
+
 import Parent from './Parent'; 
+import { GET_BLOCK_NUMBER, GET_PENDING_TRANSACTIONS, GET_BLOCK } from '../request';
+import Moneparam from './methods_with_one_param';
 function App() {
 
   return (
@@ -17,10 +19,9 @@ function App() {
         <div className="columns has-text-grey	">
           <div className="column is-half is-offset-one-quarter">
 
-            <Parent header ="transaction"/>
-            <GetBlockNumber />
-            <GetBlock />
-
+            <Mnoparma header="getBlockNumber" request={GET_BLOCK_NUMBER}/>
+            <Mnoparma header="getPendingTransactions" request={GET_PENDING_TRANSACTIONS}/>
+            <Moneparam header = "getBlock" request={GET_BLOCK}/>
 
           </div>
 
