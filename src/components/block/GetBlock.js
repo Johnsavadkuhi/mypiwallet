@@ -68,7 +68,7 @@ function GetBlock() {
         <>
             <hr />
             {
-                isExec ? <div className="notification is-link">
+                isExec ? <div className="notification">
                 <button onClick={handleClose} className="delete"></button>
                 <div className="card-footer">
                         <pre> {JSON.stringify(block, null, 2)}</pre>
@@ -78,7 +78,7 @@ function GetBlock() {
                     <header className="card-header">
                         <p className="card-header-title has-text-danger">
                             getBlock
-                    </p>
+                        </p>
     
                         <a href="void" className="card-header-icon" aria-label="more options">
                             <span className="icon">
