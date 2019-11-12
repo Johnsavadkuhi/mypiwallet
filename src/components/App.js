@@ -1,34 +1,70 @@
 import React from 'react';
 import '../style/main.scss'
-import Mnoparma from './methods_with_no_param' ; 
+import Navigation from './navigation';
+import Home from './Home';
+import Blocks from './Blocks'; 
+import Contracts from './Contracts'; 
+import Utilities from './Utilities'; 
 
-import Parent from './Parent'; 
-import { GET_BLOCK_NUMBER, GET_PENDING_TRANSACTIONS, GET_BLOCK } from '../request';
-import Moneparam from './methods_with_one_param';
+import Transactions from './Transactions'; 
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+
+} from "react-router-dom";
+
+
+
 function App() {
 
   return (
     <>
-      <div className="container is-fluid">
-        <div className="notification has-text-centered">
-          <strong className="  is-size-4 has-text-gray">Pchain Api</strong>
-        </div>
-      </div>
+      <Router >
 
-      <div className="container is-fluid">
-        <div className="columns has-text-grey	">
-          <div className="column is-half is-offset-one-quarter">
+        <Navigation />
 
-            <Mnoparma header="getBlockNumber" request={GET_BLOCK_NUMBER}/>
-            <Mnoparma header="getPendingTransactions" request={GET_PENDING_TRANSACTIONS}/>
-            <Moneparam header = "getBlock" request={GET_BLOCK}/>
+        <Switch>
+
+          <Route exact path="/" >
+            <Home />
+          </Route>
+
+          <Route path="/blocks">
+            <Blocks/>
+          </Route>
+
+          <Router path="/transactions">
+            <Transactions/>
+          </Router>
+          <Router path="/contracts">
+            <Contracts/>
+          </Router>
+          <Router path="/utilities">
+            <Utilities/>
+          </Router>
+
+        </Switch>
+{/* 
+        <div className="container is-fluid">
+          <div className="columns has-text-grey	">
+            <div className="column is-half is-offset-one-quarter">
+
+              <Mnoparma header="getBlockNumber" request={GET_BLOCK_NUMBER} />
+              <Mnoparma header="getPendingTransactions" request={GET_PENDING_TRANSACTIONS} />
+              <Moneparam header="getBlock" request={GET_BLOCK} />
+
+            </div>
+
 
           </div>
-
-
         </div>
-      </div>
-       </>
+      
+       */}
+      
+      </Router>
+    </>
   );
 }
 
