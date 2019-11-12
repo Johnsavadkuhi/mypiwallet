@@ -55,8 +55,8 @@ timestamp
 };
 
 export const GET_TRANSACTIONS = function (input) {
-   
-    query: `
+    return {
+        query: `
     query { 
     getTransaction(transactionHash: "${input}"){
     hash
@@ -75,6 +75,7 @@ export const GET_TRANSACTIONS = function (input) {
     
     
     `
+    }
 }
 
 
