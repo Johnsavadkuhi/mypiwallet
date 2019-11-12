@@ -48,15 +48,9 @@ function Moneparam(props) {
               </div> : 
                 <div className="card">
                     <header className="card-header">
-                        <p className="card-header-title has-text-danger">
+                        <code className="card-header-title has-text-danger is-size-5 is-size-6-mobile">
                             {props.header}
-                        </p>
-    
-                        <a href="void" className="card-header-icon" aria-label="more options">
-                            <span className="icon">
-                                <i className="fas fa-angle-down" aria-hidden="true"></i>
-                            </span>
-                        </a>
+                        </code>
                     </header>
                     <div className="card-content">
                         <div className="content">
@@ -67,7 +61,7 @@ function Moneparam(props) {
                                 </div>
                             </div>
                             <button onClick={handleClick}
-                                className="button is-rounded is-info is-small is-fullwidth has-text-weight-bold" > Execute </button>
+                                className="button is-info is-small is-fullwidth has-text-weight-bold" > Execute </button>
                         </div>
                     </div>
                   
