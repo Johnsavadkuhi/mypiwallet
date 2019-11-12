@@ -16,6 +16,8 @@ function GetBlockNumber() {
 
     const handleClick = e => {
         e.preventDefault();
+        setIsExec(true);
+
         fetch("http://localhost:5000/graphql", {
             method: 'POST',
             body: JSON.stringify(requestBody),
@@ -26,7 +28,6 @@ function GetBlockNumber() {
         }).then(res => {
             return res.json();
         }).then(resData => {
-            setIsExec(true);
             setBlockNumber(resData);
         }).catch(error => {
             console.log(error);
@@ -41,12 +42,15 @@ function GetBlockNumber() {
     return (
         <>
             <hr />
-            {isExec ? <div className="notification is-link">
+            {isExec ? 
+            <div className="notification ">
                 <button onClick={handleClose} className="delete"></button>
-                <div className="card-footer">
+                <div>
+                <div className="card-content">
                     <pre> {JSON.stringify(blockNumber, null, 2)}</pre>
                 </div>  
-
+                
+            </div>
             </div>
              :
             <div className="card">
