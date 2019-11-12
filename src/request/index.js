@@ -25,9 +25,9 @@ export const GET_PENDING_TRANSACTIONS = {
     }`
 };
 
-export const GET_BLOCK = function(input){
+export const GET_BLOCK = function (input) {
     return {
-     query: `
+        query: `
     query {
         getBlock(numberBlock:"${input}"){
 number
@@ -51,7 +51,30 @@ timestamp
         }
     }           
     `
-}
+    }
+};
+
+export const GET_TRANSACTIONS = function (input) {
+   
+    query: `
+    query { 
+    getTransaction(transactionHash: "${input}"){
+    hash
+    nonce
+    blockHash
+    transactionIndex
+    from
+    to
+    value
+    gasPrice
+    gas
+    input
+
+        }
+    }
+    
+    
+    `
 }
 
 
