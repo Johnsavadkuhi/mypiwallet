@@ -6,19 +6,19 @@ function App() {
 
   return (
     <>
-      <div class="container is-fluid">
-        <div class="notification has-text-centered">
+      <div className="container is-fluid">
+        <div className="notification has-text-centered">
           <strong className="  is-size-4 has-text-gray">Pchain Api</strong>
         </div>
       </div>
-
+      
       <div className="container is-fluid">
         <div className="columns has-text-grey	">
           <div className="column is-half is-offset-one-quarter">
 
             <GetBlockNumber />
             <GetBlock />
-            
+
 
           </div>
 
