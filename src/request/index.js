@@ -47,6 +47,7 @@ size
 gasLimit
 gasUsed
 timestamp
+transactions
             
         }
     }           
@@ -54,7 +55,7 @@ timestamp
     }
 };
 
-export const GET_TRANSACTIONS = function (input) {
+export const GET_TRANSACTION = function (input) {
     return {
         query: `
     query { 
@@ -69,6 +70,7 @@ export const GET_TRANSACTIONS = function (input) {
     gasPrice
     gas
     input
+    
 
         }
     }
@@ -78,5 +80,82 @@ export const GET_TRANSACTIONS = function (input) {
     }
 }
 
+export const GET_TRANSACTION_COUNT = function(input ){
+    return {
+        query :`
 
+        query{
+            getTransactionCount(address:"${input}")
+        }
+        
+        `
+    }
+}
 
+export const GET_BALANCE = function(input ){
+    return {
+        query :`
+
+        query{
+            getBalance(address:"${input}")
+        }
+        
+        `
+    }
+}
+
+export const GET_TRANSACTION_RECEIPT = function(input ){
+    return {
+        query :`
+
+        query{
+            getTransactionReceipt(transactionHash:"${input}"){
+                status
+                blockHash
+                blockNumber
+                transactionHash
+                transactionIndex
+                from
+                to
+                contractAddress
+                cumulativeGasUsed
+                gasUsed
+            }
+        }
+        
+        `
+    }
+}
+export const GET_BLOCK_TRANSACTION_COUNT = function(input ){
+    return {
+        query :`
+
+        query{
+            getBlockTransactionCount(numberBlock:"${input}")
+        }
+        
+        `
+    }
+}
+
+export const GET_TRANSACTION_FROM_BLOCK = function(input , input1){
+    return {
+        query :`
+        query{
+            getTransactionFromBlock(numberBlock:"${input}" , transactionIndex :"${input1}"){
+                hash
+                nonce
+                blockHash
+                transactionIndex
+                from
+                to
+                value
+                gasPrice
+                gas
+                input
+            }
+        }
+        
+        `
+    }
+}
