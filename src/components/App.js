@@ -5,7 +5,7 @@ import Home from './Home';
 import Blocks from './Blocks'; 
 import Contracts from './Contracts'; 
 import Utilities from './Utilities'; 
-
+import Account from './Account';
 import Transactions from './Transactions'; 
 
 import {
@@ -35,15 +35,19 @@ function App() {
             <Blocks/>
           </Route>
 
-          <Router path="/transactions">
+          <Route path="/transactions">
             <Transactions/>
-          </Router>
-          <Router path="/contracts">
+          </Route>
+          <Route path="/contracts">
             <Contracts/>
-          </Router>
-          <Router path="/utilities">
+          </Route>
+          <Route path="/utilities">
             <Utilities/>
-          </Router>
+            </Route>
+            <Route path="/account">
+              <Account/>
+            </Route>
+        
 
         </Switch>
 {/* 
