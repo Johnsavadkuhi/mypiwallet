@@ -36,6 +36,7 @@ function Mnoparam(props) {
             {isExec ?
                 <div className="notification ">
                     <button onClick={handleClose} className="delete"></button>
+
                     <div>
                         <div className="card-content">
                             <pre> {JSON.stringify(data, null, 2)}</pre>

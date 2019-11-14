@@ -42,7 +42,7 @@ function Moneparam(props) {
             {
                 isExec ? <div className="notification">
                 <button onClick={handleClose} className="delete"></button>
-                <div className="card-footer">
+                <div className="card-content">
                         <pre> {JSON.stringify(data, null, 2)}</pre>
                     </div>
               </div> : 
@@ -57,7 +57,7 @@ function Moneparam(props) {
                             <div className="field">
                                 <div className="control">
                                     <input value={input} onChange={handleChange}
-                                        className="input is-primary is-small" type="text" placeholder="Block Number" />
+                                        className="input is-primary is-small" type="text" placeholder={props.placeholder} />
                                 </div>
                             </div>
                             <button onClick={handleClick}

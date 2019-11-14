@@ -1,8 +1,7 @@
 import React from 'react'; 
-import {GET_BLOCK } from '../request/'; 
-import Mnoparma from './methods_with_no_param'; 
+import {GET_TRANSACTION_COUNT, GET_TRANSACTION , GET_TRANSACTION_RECEIPT , GET_TRANSACTION_FROM_BLOCK} from '../request/'; 
 import Moneparam from './methods_with_one_param';
-
+import Mtwoparam from './methods_with_two_param'; 
 function Transactions (){
 
     return (<>
@@ -11,9 +10,10 @@ function Transactions (){
           <div className="columns has-text-grey	">
             <div className="column is-half is-offset-one-quarter">
 
-
-              <Moneparam header="getBlock" request={GET_BLOCK} />
-
+              <Moneparam header="getTransaction" request={GET_TRANSACTION} placeholder="Transaction Hash" />
+              <Moneparam header="getTransactionCount" request={GET_TRANSACTION_COUNT} placeholder="Address"/>
+              <Moneparam header="getTransactionReceipt" request={GET_TRANSACTION_RECEIPT} placeholder="Transaction Hash"/>
+              <Mtwoparam header="getTransactionFromBlock" request={GET_TRANSACTION_FROM_BLOCK} placeholder="Block Number" placeholdertwo ="Transaction Index"/>
             </div>
 
 

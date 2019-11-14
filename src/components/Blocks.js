@@ -1,5 +1,5 @@
 import React from 'react'; 
-import {GET_BLOCK , GET_BLOCK_NUMBER} from '../request/'; 
+import {GET_BLOCK , GET_BLOCK_NUMBER , GET_BLOCK_TRANSACTION_COUNT } from '../request/'; 
 import Mnoparma from './methods_with_no_param'; 
 import Moneparam from './methods_with_one_param';
 
@@ -13,7 +13,8 @@ function Blocks (){
 
               <Mnoparma header="getBlockNumber" request={GET_BLOCK_NUMBER} />
 
-              <Moneparam header="getBlock" request={GET_BLOCK} />
+              <Moneparam header="getBlock" request={GET_BLOCK} placeholder="Block Number"/>
+              <Moneparam header="getBlockTransactionCount" request={GET_BLOCK_TRANSACTION_COUNT} placeholder="Block Number"/>
 
             </div>
 
