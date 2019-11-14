@@ -21,7 +21,7 @@ function Mtwoparam(props) {
 
         fetch("http://localhost:5000/graphql", {
             method: 'POST',
-            body: JSON.stringify(props.request(input , input1)),
+            body: JSON.stringify(props.request(input , input1 )),
             headers: {
                 "Content-Type": "application/json"
             }
@@ -40,7 +40,6 @@ function Mtwoparam(props) {
 
     return (
         <>
-            <hr />
             {
                 isExec ? <div className="notification">
                 <button onClick={handleClose} className="delete"></button>

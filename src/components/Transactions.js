@@ -1,27 +1,89 @@
-import React from 'react'; 
-import {GET_TRANSACTION_COUNT, GET_TRANSACTION , GET_TRANSACTION_RECEIPT , GET_TRANSACTION_FROM_BLOCK} from '../request/'; 
+import React, { useState } from 'react';
+import { GET_TRANSACTION_COUNT, GET_TRANSACTION, GET_TRANSACTION_RECEIPT, GET_TRANSACTION_FROM_BLOCK } from '../request/';
 import Moneparam from './methods_with_one_param';
-import Mtwoparam from './methods_with_two_param'; 
-function Transactions (){
+import Mtwoparam from './methods_with_two_param';
+import RadioButton from './RadioButton';
 
-    return (<>
+function Transactions() {
 
-        <div className="container is-fluid">
-          <div className="columns has-text-grey	">
-            <div className="column is-half is-offset-one-quarter">
+  const [selected, setSelected] = useState("Transaction");
+  const radioChangeHandler = e => {
 
-              <Moneparam header="getTransaction" request={GET_TRANSACTION} placeholder="Transaction Hash" />
-              <Moneparam header="getTransactionCount" request={GET_TRANSACTION_COUNT} placeholder="Address"/>
-              <Moneparam header="getTransactionReceipt" request={GET_TRANSACTION_RECEIPT} placeholder="Transaction Hash"/>
-              <Mtwoparam header="getTransactionFromBlock" request={GET_TRANSACTION_FROM_BLOCK} placeholder="Block Number" placeholdertwo ="Transaction Index"/>
-            </div>
+    setSelected(e.target.value)
 
+  }
+  return (<>
 
-          </div>
+    <br />
+
+    <div className="container is-fluid">
+      <div className="columns has-text-grey">
+        <div className="column is-3">
+        <div className="box">
+        <p className="title is-5">Select a Method -> </p>
+        <RadioButton
+            changed={radioChangeHandler}
+            isSelected={selected === "Transaction"}
+            name="answer"
+            id="1"
+            label="Transaction"
+            value="Transaction"
+          />
+
+          <RadioButton
+            name="answer"
+            changed={radioChangeHandler}
+            isSelected={selected === "TransactionCount"}
+            id="2"
+            label="TransactionCount"
+            value="TransactionCount"
+          />
+
+          <RadioButton
+            name="answer"
+            changed={radioChangeHandler}
+            isSelected={selected === "TransactionReceipt"}
+            id="3"
+            label="TransactionReceipt"
+            value="TransactionReceipt"
+          />
+          <RadioButton
+            name="answer"
+            changed={radioChangeHandler}
+            isSelected={selected === "TransactionFromBlock"}
+            id="4"
+            label="TransactionFromBlock"
+            value="TransactionFromBlock"
+          />
+
+      </div>
+          
+
         </div>
-      
-      
-    </>)
+
+        <div className="column is-9">
+         
+          {
+            selected === "Transaction" && <Moneparam header="getTransaction" request={GET_TRANSACTION} placeholder="Transaction Hash" />
+          }
+
+          {
+            selected === "TransactionCount" && <Moneparam header="getTransactionCount" request={GET_TRANSACTION_COUNT} placeholder="Address" />
+          }
+          {
+            selected === "TransactionReceipt" && <Moneparam header="getTransactionReceipt" request={GET_TRANSACTION_RECEIPT} placeholder="Transaction Hash" />
+          }
+          {
+            selected === "TransactionFromBlock" && <Mtwoparam header="getTransactionFromBlock" request={GET_TRANSACTION_FROM_BLOCK} placeholder="Block Number" placeholdertwo="Transaction Index" />
+          }
+
+</div>
+        </div>
+      </div>
+   
+
+
+  </>)
 
 }
 
