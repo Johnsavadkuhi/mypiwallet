@@ -24,7 +24,7 @@ function Mthreeparam(props) {
         e.preventDefault();
         setIsExec(true);
 
-        fetch("http://localhost:5000/graphql", {
+        fetch(process.env.REACT_APP_END_POINT, {
             method: 'POST',
             body: JSON.stringify(props.request(input , input1 , input2)),
             headers: {
