@@ -33,6 +33,9 @@ function Navigation() {
           <NavLink to="/transactions" className="navbar-item">
             Transactions
         </NavLink>
+        <NavLink to="/account" className="navbar-item">
+          Account
+        </NavLink>
         <NavLink to="/contracts" className="navbar-item">
             Contracts
         </NavLink>
