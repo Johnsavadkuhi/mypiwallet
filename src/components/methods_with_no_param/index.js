@@ -9,7 +9,7 @@ function Mnoparam(props) {
         e.preventDefault();
         setIsExec(true);
 
-        fetch("http://localhost:5000/graphql", {
+        fetch(`http://${process.env.REACT_APP_END_POINT}:5000/graphql`, {
             method: 'POST',
             body: JSON.stringify(props.request),
             headers: {
