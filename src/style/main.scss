@@ -1,1 +1,10 @@
 @import '~bulma/bulma.sass'; 
+
+.overlapMenu{
+    position :absolute ; 
+    z-index: 1;
+    width:100% ; 
+    display: block;
+    text-align: center;
+
+}
