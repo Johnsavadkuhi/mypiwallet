@@ -56,25 +56,24 @@ function CreateAccount(props) {
                         <div className="message-body">
 
                             <fieldset >
-                                <label >Address</label>
-
+                                <span class="label tag is-danger">Address</span>
                                 <div className="field has-addons">
 
                                     <p className="control is-expanded">
                                         <input id="account_address" readOnly={true} className="input is-small" type="text" value={state.address} />
                                     </p>
                                     <div className="control">
-                                        <button  onClick={handleCopyAddress} className="button is-small">copy</button>
+                                        <button  onClick={handleCopyAddress} className="button is-small ">copy</button>
                                     </div>
 
                                 </div>
-                                <label  >PrivateKey</label>
+                                <span class="label tag is-danger">Private Key</span>
                                 <div className="field is-horizontal">
                                 
                                     <div className="field-body">
                                         <div className="field has-addons">
                                             <div className="control is-expanded">
-                                                <textarea id="privatekey" readOnly={true} className="textarea is-small" value={state.privateKey} />
+                                                <textarea id="privatekey" readOnly={true} className="textarea is-small " value={state.privateKey} />
                                             </div>
                                             <div className="control">
                                                 <button  onClick={handleCopyPrivateKey} className="button is-small height_copy_button">copy</button>
