@@ -17,7 +17,7 @@ function CreateAccount(props) {
 
     const handleCopyAddress = ()=>{
 
-        var  copyText = document.getElementById("account_address");
+        const  copyText = document.getElementById("account_address");
         
         /* Select the text field */
         console.log(copyText)
@@ -31,7 +31,7 @@ function CreateAccount(props) {
     }
     const handleCopyPrivateKey =()=>{
 
-        var  copyText = document.getElementById("privatekey");
+        const  copyText = document.getElementById("privatekey");
         /* Select the text field */
         copyText.select();
         copyText.setSelectionRange(0, 99999); /*For mobile devices*/
