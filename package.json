@@ -4,7 +4,9 @@
   "private": true,
   "dependencies": {
     "bulma": "^0.8.0",
+    "flatted": "^2.0.1",
     "node-sass": "^4.13.0",
+    "pweb3-eth-accounts": "^1.0.0-beta.60",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-scripts": "3.2.0"
