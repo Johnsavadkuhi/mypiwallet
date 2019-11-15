@@ -10,7 +10,8 @@
     "pweb3-eth-accounts": "^1.0.0-beta.60",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
-    "react-scripts": "3.2.0"
+    "react-scripts": "3.2.0",
+    "sweetalert2": "^9.3.11"
   },
   "scripts": {
     "start": "react-scripts start",
