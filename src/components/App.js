@@ -1,11 +1,10 @@
 import React from 'react';
 import '../style/main.scss'
 import Navigation from './navigation';
-import Home from './Home';
 import Blocks from './Blocks'; 
 import Contracts from './Contracts'; 
 import Utilities from './Utilities'; 
-import Account from './Account';
+import Account from './account/Account';
 import Transactions from './Transactions'; 
 
 import {
@@ -24,15 +23,11 @@ function App() {
       <Router >
 
         <Navigation />
-
+ 
         <Switch>
 
-          <Route exact path="/" >
-            <Home />
-          </Route>
-
-          <Route path="/blocks">
-            <Blocks/>
+          <Route exact path="/">
+            <Account/>
           </Route>
 
           <Route path="/transactions">
@@ -44,8 +39,8 @@ function App() {
           <Route path="/utilities">
             <Utilities/>
             </Route>
-            <Route path="/account">
-              <Account/>
+            <Route path="/blocks">
+              <Blocks/>
             </Route>
         
 

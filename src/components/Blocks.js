@@ -1,29 +1,75 @@
-import React from 'react'; 
-import {GET_BLOCK , GET_BLOCK_NUMBER , GET_BLOCK_TRANSACTION_COUNT } from '../request/'; 
-import Mnoparma from './methods_with_no_param'; 
+import React, { useState } from 'react';
+import { GET_BLOCK, GET_BLOCK_NUMBER, GET_BLOCK_TRANSACTION_COUNT } from '../request/';
+import Mnoparma from './methods_with_no_param';
 import Moneparam from './methods_with_one_param';
+import RadioButton from './RadioButton';
 
-function Blocks (){
+function Blocks() {
+  const [selected, setSelected] = useState("BlockNumber");
+  const radioChangeHandler = e => {
 
-    return (<>
+    setSelected(e.target.value)
 
-        <div className="container is-fluid">
-          <div className="columns has-text-grey	">
-            <div className="column is-half is-offset-one-quarter">
+  }
+  return (<> 
+    
+    <br />
+    <div className="container is-fluid">
+      <div className="columns has-text-grey	">         
+          <div className="column is-3">
+            <div className="box">
+              <p className="title is-5">Select a Method -> </p>
+              <RadioButton
+                changed={radioChangeHandler}
+                isSelected={selected === "BlockNumber"}
+                name="answer"
+                id="1"
+                label="BlockNumber"
+                value="BlockNumber"
+              />
 
-              <Mnoparma header="getBlockNumber" request={GET_BLOCK_NUMBER} />
+              <RadioButton
+                name="answer"
+                changed={radioChangeHandler}
+                isSelected={selected === "Block"}
+                id="2"
+                label="Block"
+                value="Block"
+              />
 
-              <Moneparam header="getBlock" request={GET_BLOCK} placeholder="Block Number"/>
-              <Moneparam header="getBlockTransactionCount" request={GET_BLOCK_TRANSACTION_COUNT} placeholder="Block Number"/>
+              <RadioButton
+                name="answer"
+                changed={radioChangeHandler}
+                isSelected={selected === "BlockTransactionCount"}
+                id="3"
+                label="BlockTransactionCount"
+                value="BlockTransactionCount"
+              />
+
 
             </div>
 
 
           </div>
-        </div>
-      
-      
-    </>)
+          <div className="column is-9">
+
+            {
+              selected === "BlockNumber" && <Mnoparma header="getBlockNumber" request={GET_BLOCK_NUMBER}/>
+            }
+            {
+              selected === "Block" && <Moneparam header="getBlock" request={GET_BLOCK} placeholder="Block Number" />
+            }
+            {
+              selected === "BlockTransactionCount" && <Moneparam header="getBlockTransactionCount" request={GET_BLOCK_TRANSACTION_COUNT} placeholder="Block Number" />
+            }
+
+          </div>
+       
+      </div>
+    </div>
+
+
+  </>)
 
 }
 
