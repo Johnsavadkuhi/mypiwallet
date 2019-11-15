@@ -1,12 +1,13 @@
 import React, {useState} from 'react'; 
+import loadable from '@loadable/component'
 import {GET_BALANCE , GET_FULL_BALANCE} from '../../request'; 
 import Moneparam from '../methods_with_one_param';
 import Mthreeparam from '../methods_with_three_param';
 import RadioButton from '../RadioButton';
-import CreateAccount from '../account/CreateAccount'; 
+const CreateAccount = loadable(() => import('../account/CreateAccount'));
 
 function Account (){
-  const [selected, setSelected] = useState("CreateAccount");
+  const [selected, setSelected] = useState("Balance");
   
   const radioChangeHandler = e => {
  
@@ -26,7 +27,7 @@ function Account (){
                 changed={radioChangeHandler}
                 isSelected={selected === "CreateAccount"}
                 id="3"
-                label="CreateAccount"
+                label="Create Account"
                 value="CreateAccount"
               />
               <RadioButton
