@@ -77,7 +77,7 @@ function CreateAccount(props) {
                                                 <textarea id="privatekey" readOnly={true} className="textarea is-small" value={state.privateKey} />
                                             </div>
                                             <div className="control">
-                                                <button  onClick={handleCopyPrivateKey} className="button is-small height_button">copy</button>
+                                                <button  onClick={handleCopyPrivateKey} className="button is-small height_copy_button">copy</button>
                                             </div>
                                         </div>
                                     </div>
