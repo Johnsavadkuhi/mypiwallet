@@ -76,12 +76,9 @@ function Account() {
               placeholderthree="Full Proxied" />
           }
 
-
-
         </div>
       </div>
     </div>
-
 
   </>)
 
