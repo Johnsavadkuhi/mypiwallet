@@ -5,7 +5,8 @@ import Blocks from './Blocks';
 import Contracts from './Contracts'; 
 import Utilities from './Utilities'; 
 import Account from './account/Account';
-import Transactions from './Transactions'; 
+import Transactions from './Transactions';
+import Footer from './Footer';
 
 import {
   BrowserRouter as Router,
@@ -23,7 +24,7 @@ function App() {
       <Router >
 
         <Navigation />
- 
+
         <Switch>
 
           <Route exact path="/">
@@ -45,24 +46,11 @@ function App() {
         
 
         </Switch>
-{/* 
-        <div className="container is-fluid">
-          <div className="columns has-text-grey	">
-            <div className="column is-half is-offset-one-quarter">
 
-              <Mnoparma header="getBlockNumber" request={GET_BLOCK_NUMBER} />
-              <Mnoparma header="getPendingTransactions" request={GET_PENDING_TRANSACTIONS} />
-              <Moneparam header="getBlock" request={GET_BLOCK} />
-
-            </div>
-
-
-          </div>
-        </div>
-      
-       */}
       
       </Router>
+      <Footer/>
+
     </>
   );
 }
