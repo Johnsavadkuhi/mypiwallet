@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-
 function Mnoparam(props) {
 
     const [data, setData] = useState('');
     const [isExec, setIsExec] = useState(false);
-
-    const handleClick = e => {
+    const handleClick =async  e => {
         e.preventDefault();
-        setIsExec(true);
+        setIsExec(true);    
 
         fetch(process.env.REACT_APP_END_POINT, {
             method: 'POST',
@@ -20,10 +18,13 @@ function Mnoparam(props) {
             return res.json();
         }).then(resData => {
             setData(resData);
+            console.log("data : " , data); 
         }).catch(error => {
             console.log(error);
             throw error;
         })
+    
+
     }
     const handleClose = () => {
         setIsExec(false);
@@ -32,7 +33,6 @@ function Mnoparam(props) {
 
     return (
         <>
-            <hr />
             {isExec ?
                 <div className="notification ">
                     <button onClick={handleClose} className="delete"></button>
