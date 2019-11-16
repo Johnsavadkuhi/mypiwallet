@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Account } from '../../pweb3';
+import {Toast} from '../../popup/Toast'; 
 
 function CreateAccount(props) {
 
@@ -41,6 +42,7 @@ function CreateAccount(props) {
 
     const handleCopyAddress = () => {
 
+        
         const copyText = document.getElementById("account_address");
 
         /* Select the text field */
@@ -50,7 +52,12 @@ function CreateAccount(props) {
         /* Copy the text inside the text field */
 
         document.execCommand('copy');
-
+       
+        Toast.fire({
+            icon: 'success',
+            title: 'copied'
+          })
+        
 
     }
     const handleCopyPrivateKey = () => {
@@ -61,6 +68,10 @@ function CreateAccount(props) {
         copyText.setSelectionRange(0, 99999); /*For mobile devices*/
         /* Copy the text inside the text field */
         document.execCommand("copy");
+        Toast.fire({
+            icon: 'success',
+            title: 'copied'
+          })
     }
 
     const handleDownloadClick = () => {
@@ -76,6 +87,10 @@ function CreateAccount(props) {
         element.click();
 
         document.body.removeChild(element);
+        Toast.fire({
+            icon: 'success',
+            title: 'Downloaded'
+          })
 
     }
     const handleClose = () => {
