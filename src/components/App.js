@@ -6,7 +6,6 @@ import Contracts from './Contracts';
 import Utilities from './Utilities'; 
 import Account from './account/Account';
 import Transactions from './Transactions';
-import Footer from './Footer';
 
 import {
   BrowserRouter as Router,
@@ -49,7 +48,6 @@ function App() {
 
       
       </Router>
-      <Footer/>
 
     </>
   );
