@@ -67,7 +67,7 @@ function CreateAccount(props) {
 
         const element = document.createElement('a');
         const encryptedPrivatedKey = Account.encrypt(state.privateKey , password); 
-        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(encryptedPrivatedKey.toString()));
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(encryptedPrivatedKey));
         element.setAttribute('download', state.address);
 
         element.style.display = 'none';
