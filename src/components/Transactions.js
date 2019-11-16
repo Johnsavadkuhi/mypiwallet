@@ -35,7 +35,7 @@ function Transactions() {
             changed={radioChangeHandler}
             isSelected={selected === "TransactionCount"}
             id="2"
-            label="TransactionCount"
+            label="Transaction Count"
             value="TransactionCount"
           />
 
@@ -44,7 +44,7 @@ function Transactions() {
             changed={radioChangeHandler}
             isSelected={selected === "TransactionReceipt"}
             id="3"
-            label="TransactionReceipt"
+            label="Transaction Receipt"
             value="TransactionReceipt"
           />
           <RadioButton
@@ -52,7 +52,7 @@ function Transactions() {
             changed={radioChangeHandler}
             isSelected={selected === "TransactionFromBlock"}
             id="4"
-            label="TransactionFromBlock"
+            label="Transaction From Block"
             value="TransactionFromBlock"
           />
 
