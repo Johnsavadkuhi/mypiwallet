@@ -24,7 +24,7 @@ function Blocks() {
                 isSelected={selected === "BlockNumber"}
                 name="answer"
                 id="1"
-                label="BlockNumber"
+                label="Block Number"
                 value="BlockNumber"
               />
 
@@ -42,7 +42,7 @@ function Blocks() {
                 changed={radioChangeHandler}
                 isSelected={selected === "BlockTransactionCount"}
                 id="3"
-                label="BlockTransactionCount"
+                label="Block Transaction Count"
                 value="BlockTransactionCount"
               />
 
