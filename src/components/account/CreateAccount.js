@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Account } from '../../pweb3';
-import {Toast , Warning} from '../../popup/Toast'; 
+import { Toast, Warning } from '../../popup';
 
 function CreateAccount(props) {
 
@@ -42,7 +42,7 @@ function CreateAccount(props) {
 
     const handleCopyAddress = () => {
 
-        
+
         const copyText = document.getElementById("account_address");
 
         /* Select the text field */
@@ -52,12 +52,12 @@ function CreateAccount(props) {
         /* Copy the text inside the text field */
 
         document.execCommand('copy');
-       
+
         Toast.fire({
             icon: 'success',
             title: 'copied'
-          })
-        
+        })
+
 
     }
     const handleCopyPrivateKey = () => {
@@ -71,31 +71,31 @@ function CreateAccount(props) {
         Toast.fire({
             icon: 'success',
             title: 'copied'
-          })
+        })
     }
 
     const handleDownloadClick = () => {
-        Warning.fire({}).then( result =>{
-       if(result.value ){
-        const element = document.createElement('a');
-        const encryptedPrivatedKey = Account.encrypt(state.privateKey , password); 
-        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(encryptedPrivatedKey));
-        element.setAttribute('download', state.address);
+        Warning.fire({}).then(result => {
+            if (result.value) {
+                const element = document.createElement('a');
+                const encryptedPrivatedKey = Account.encrypt(state.privateKey, password);
+                element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(encryptedPrivatedKey));
+                element.setAttribute('download', state.address);
 
-        element.style.display = 'none';
-        document.body.appendChild(element);
+                element.style.display = 'none';
+                document.body.appendChild(element);
 
-        element.click();
+                element.click();
 
-        document.body.removeChild(element);
-       
-        Toast.fire({
-            icon: 'success',
-            title: 'Downloaded'
-          })
-        }
+                document.body.removeChild(element);
 
-    }); 
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Downloaded'
+                })
+            }
+
+        });
 
     }
     const handleClose = () => {
@@ -107,47 +107,57 @@ function CreateAccount(props) {
         <>
             {isExec ?
                 <>
-                    <article className="message  is-warning">
+                    <article className="message is-light"> 
                         <div className="message-header">
-                            <p className="is-size-5 is-size-6-mobile has-text-info">Account </p>
+                            <code className="is-size-5 is-size-6-mobile has-text-grey-dark"> Account </code>
                             <button className="delete" aria-label="delete" onClick={handleClose}></button>
                         </div>
                         <div className="message-body">
 
                             <fieldset >
-                                <span className="label tag is-warning has-text-link	">Address</span>
+                                <span className=" is-family-code has-text-grey-dark"> Address</span>
                                 <div className="field has-addons">
 
                                     <p className="control is-expanded">
-                                        <input id="account_address" readOnly={true} className="input is-small" type="text" value={state.address} />
+                                        <input id="account_address" readOnly={true} className="input has-background-light is-small has-text-grey-light" type="text" value={state.address} />
                                     </p>
                                     <div className="control">
-                                        <button onClick={handleCopyAddress} className="button is-small ">copy</button>
+                                        <button onClick={handleCopyAddress} className="button is-small has-background-light">copy</button>
                                     </div>
 
                                 </div>
-                                <span className="label tag is-warning has-text-link">Private Key</span>
+                                <span className=" is-family-code has-text-grey-dark">Privatekey</span>
                                 <div className="field is-horizontal">
 
                                     <div className="field-body">
                                         <div className="field has-addons">
                                             <div className="control is-expanded">
-                                                <textarea id="privatekey" readOnly={true} className="textarea is-small" value={state.privateKey} />
+                                                <textarea id="privatekey" readOnly={true} className="textarea has-background-light is-small has-text-grey-light  " value={state.privateKey} />
                                             </div>
                                             <div className="control">
-                                                <button onClick={handleCopyPrivateKey} className="button is-small height_copy_button">copy</button>
+                                                <button onClick={handleCopyPrivateKey} className="button is-small height_copy_button has-background-light">copy</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </fieldset>
+
                             <div className="has-text-centered download_btn_margin">
-                                <button className="button is-fullwidth has-text-link has-background-warning label " onClick={handleDownloadClick}>
-                                    <span>Keystore</span>
-                                    <span className="icon is-small">
-                                        <i className="fa fa-download"></i>
-                                    </span>
-                                </button>
+                                <div className="field">
+                                    <div className="file is-light has-name is-boxed is-fullwidth" onClick={handleDownloadClick}>
+                                        <label className="file-label">
+                                            <input className="file-input " type="text" readOnly={true} name="resume" />
+                                            <span className="file-cta">
+                                                <span className="file-icon has-text-grey-dark ">
+                                                    <i className="fa fa-cloud-download"></i>
+                                                </span>
+                                                <span className="file-label has-text-grey-dark is-family-code">
+                                                   keystore
+                                            </span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </article>
@@ -170,7 +180,7 @@ function CreateAccount(props) {
                                         onChange={handleChange}
                                         className="input is-small" type="password" placeholder="Password" />
                                     <span className="icon is-small is-left">
-                                        <i className="fa fa-lock" aria-hidden="true"></i> 
+                                        <i className="fa fa-lock" aria-hidden="true"></i>
                                     </span>
                                 </p>
                             </div>
