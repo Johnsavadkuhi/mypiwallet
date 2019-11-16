@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Account } from '../../pweb3';
-import {Toast} from '../../popup/Toast'; 
+import {Toast , Warning} from '../../popup/Toast'; 
 
 function CreateAccount(props) {
 
@@ -75,7 +75,8 @@ function CreateAccount(props) {
     }
 
     const handleDownloadClick = () => {
-
+        Warning.fire({}).then( result =>{
+       if(result.value ){
         const element = document.createElement('a');
         const encryptedPrivatedKey = Account.encrypt(state.privateKey , password); 
         element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(encryptedPrivatedKey));
@@ -87,10 +88,14 @@ function CreateAccount(props) {
         element.click();
 
         document.body.removeChild(element);
+       
         Toast.fire({
             icon: 'success',
             title: 'Downloaded'
           })
+        }
+
+    }); 
 
     }
     const handleClose = () => {
@@ -102,15 +107,15 @@ function CreateAccount(props) {
         <>
             {isExec ?
                 <>
-                    <article className="message  is-info">
+                    <article className="message  is-warning">
                         <div className="message-header">
-                            <p className="is-size-5 is-size-6-mobile">Account Info </p>
+                            <p className="is-size-5 is-size-6-mobile has-text-info">Account </p>
                             <button className="delete" aria-label="delete" onClick={handleClose}></button>
                         </div>
                         <div className="message-body">
 
                             <fieldset >
-                                <span class="label tag is-danger">Address</span>
+                                <span className="label tag is-warning has-text-link	">Address</span>
                                 <div className="field has-addons">
 
                                     <p className="control is-expanded">
@@ -121,13 +126,13 @@ function CreateAccount(props) {
                                     </div>
 
                                 </div>
-                                <span class="label tag is-danger">Private Key</span>
+                                <span className="label tag is-warning has-text-link">Private Key</span>
                                 <div className="field is-horizontal">
 
                                     <div className="field-body">
                                         <div className="field has-addons">
                                             <div className="control is-expanded">
-                                                <textarea id="privatekey" readOnly={true} className="textarea is-small " value={state.privateKey} />
+                                                <textarea id="privatekey" readOnly={true} className="textarea is-small" value={state.privateKey} />
                                             </div>
                                             <div className="control">
                                                 <button onClick={handleCopyPrivateKey} className="button is-small height_copy_button">copy</button>
@@ -137,10 +142,10 @@ function CreateAccount(props) {
                                 </div>
                             </fieldset>
                             <div className="has-text-centered download_btn_margin">
-                                <button className="button is-fullwidth " onClick={handleDownloadClick}>
+                                <button className="button is-fullwidth has-text-link has-background-warning label " onClick={handleDownloadClick}>
                                     <span>Keystore</span>
-                                    <span class="icon is-small">
-                                        <i class="fa fa-download"></i>
+                                    <span className="icon is-small">
+                                        <i className="fa fa-download"></i>
                                     </span>
                                 </button>
                             </div>
@@ -165,7 +170,8 @@ function CreateAccount(props) {
                                         onChange={handleChange}
                                         className="input is-small" type="password" placeholder="Password" />
                                     <span className="icon is-small is-left">
-                                        <i class="fa fa-lock" aria-hidden="true"></i>                                        </span>
+                                        <i className="fa fa-lock" aria-hidden="true"></i> 
+                                    </span>
                                 </p>
                             </div>
                             <p id="helper" className="help">{helper}</p>
