@@ -52,7 +52,7 @@ function Account() {
               changed={radioChangeHandler}
               isSelected={selected === "FullBalance"}
               id="2"
-              label="FullBalance"
+              label="Full Balance"
               value="FullBalance"
             />
           </div>
