@@ -1,2 +1,4 @@
 const { Accounts} = require('pweb3-eth-accounts');
-export const Account = new Accounts(process.env.REACT_APP_END_POINT); 
+const {Personal} = require('pweb3-eth-personal');
+export const Account = new Accounts("http://46.4.199.148:5000/") ; 
+

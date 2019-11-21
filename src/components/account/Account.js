@@ -13,6 +13,15 @@ const CreateAccount = loadable(() => import('../account/CreateAccount'),
       <progress className="progress is-large is-info" max="100">60%</progress>
     </div>
   });
+  const SendTransaction = loadable(() => import('../account/SendTransaction'),
+  {
+    fallback: <div>
+      <progress className="progress is-small is-primary" max="100">15%</progress>
+      <progress className="progress is-danger" max="100">30%</progress>
+      <progress className="progress is-medium is-dark" max="100">45%</progress>
+      <progress className="progress is-large is-info" max="100">60%</progress>
+    </div>
+  });
 
 function Account() {
   const [selected, setSelected] = useState("Balance");
@@ -39,6 +48,14 @@ function Account() {
               value="CreateAccount"
             />
             <RadioButton
+              name="answer"
+              changed={radioChangeHandler}
+              isSelected={selected === "SendTransaction"}
+              id="4"
+              label="Send Transaction"
+              value="SendTransaction"
+            />
+            <RadioButton
               changed={radioChangeHandler}
               isSelected={selected === "Balance"}
               name="answer"
@@ -63,6 +80,9 @@ function Account() {
 
           {
             selected === "Balance" && <Moneparam header="getBalance" request={GET_BALANCE} placeholder="Address" />
+          }
+          {
+            selected==="SendTransaction" && <SendTransaction  />
           }
           {
             selected === "CreateAccount" &&
