@@ -18,7 +18,6 @@ function Mnoparam(props) {
             return res.json();
         }).then(resData => {
             setData(resData);
-            console.log("data : " , data); 
         }).catch(error => {
             console.log(error);
             throw error;

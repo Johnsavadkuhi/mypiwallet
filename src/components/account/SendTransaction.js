@@ -1,19 +1,12 @@
 import React, { useState } from 'react';
- import {_Personal , Account} from '../../pweb3/'; 
-import Swal from 'sweetalert2'; 
+import { Tx  } from '../../pweb3/';
+
 function SendTransaction(props) {
 
-    const [data, setData] = useState("");
-    const [from , setFrom] = useState("");
     const [to, setTo] = useState("");
     const [piValue, setPiValue] = useState(0);
     const [isExec, setIsExec] = useState(false);
-    const [privateKey , setPrivateKey] = useState(); 
 
-    const handleChange = e => {
-
-        setFrom(e.target.value);
-    }
     const handleChange1 = e => {
 
         setTo(e.target.value);
@@ -25,38 +18,52 @@ function SendTransaction(props) {
     const handleSend = async (e) => {
         e.preventDefault();
         setIsExec(true);
-        
-        const { value: password } = await Swal.fire({
-            title: 'Enter your privatekey',
-            input: 'password',
-            inputPlaceholder: 'privateKey',
-            inputAttributes: {
-              maxlength: 64,
-              autocapitalize: 'off',
-              autocorrect: 'off'
+             
+                const privateKey1 =   new Buffer('57d54ca2d72ced0021bae39919305bee77d47862ae3d878177fddbdaf99354f6' , 'hex');
+                
+                const rawTx = {
+                    nonce: '0x7',
+                    gasPrice: '0x4A817C800',
+                    gasLimit: '0x5208',
+                    to: '0xEA048c9D9B3D226550bDDb6515a6425153474D8b',
+                    value: '0x218711A00',
+                    data: '',
+                    chainId: "pchain"
+                } 
+
+                // var rawTx = {
+                //     nonce: '0x00',
+                //     gasPrice: '0x09184e72a000', 
+                //     gasLimit: '0x2710',
+                //     to: '0x0000000000000000000000000000000000000000', 
+                //     value: '0x00', 
+                //     data: '0x7f7465737432000000000000000000000000000000000000000000000000000000600057'
+                //    }
+                const tx = new Tx(rawTx);
+                tx.sign(privateKey1);
+                const serializedTx = tx.serialize();
+                console.log(serializedTx.toString('hex'));
+
+                // web3.pi.sendRawTransaction('0x' + serializedTx.toString('hex'), function (err, hash) {
+                //     console.error('error : ', err);
+                //     if (!err)
+                //         console.log(hash);
+                // });
             }
-          })
-          
-          if (password) {
-              setPrivateKey(password); 
-            Swal.fire(`Entered privateKey: ${password}`)
-          }
-          
-       const signedTransaction =  Account.signTransaction({
-            from : "0x71509F188a846032029E93E2bBe2B9FC61329F25" ,
-            to:"0xEA048c9D9B3D226550bDDb6515a6425153474D8b", 
-            gasPrice: "20000000000",
-            gas: "21000",
-            value: "1000000000000000000",
-            data:""
- 
-        } ,"0x57d54ca2d72ced0021bae39919305bee77d47862ae3d878177fddbdaf99354f6").then(r=>{
-            console.log("result  : " , r); 
 
-        }); 
-        
 
-    }
+
+        //   web3.pi.signTransaction({
+        //     from : "0x71509F188a846032029E93E2bBe2B9FC61329F25" ,
+        //     to:"0xEA048c9D9B3D226550bDDb6515a6425153474D8b", 
+        //     gasPrice: "20000000000",
+        //     gas: "21000",
+        //     value: "1000000000000000000",
+        //     data:""
+
+        // } ).then(console.log) ; 
+
+    
     const handleClose = () => {
         setIsExec(false);
     }
@@ -68,7 +75,7 @@ function SendTransaction(props) {
                     <div className="notification">
                         <button onClick={handleClose} className="delete"></button>
                         <div className="card-content">
-                            <pre> {JSON.stringify(data, null, 2)}</pre>
+                            {/* <pre> {JSON.stringify(data, null, 2)}</pre> */}
                         </div>
                     </div>
                     :
@@ -82,12 +89,6 @@ function SendTransaction(props) {
                             <div className="content">
                                 <div className="field">
 
-                                    <div className="control">
-                                        <input value={from} onChange={handleChange}
-                                            className="input is-primary is-small" type="text" placeholder="From Address" />
-
-                                    </div>
-                                    <br />
                                     <div className="control">
                                         <input value={to} onChange={handleChange1}
                                             className="input is-primary is-small" type="text" placeholder="To Address" />
