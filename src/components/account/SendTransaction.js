@@ -18,8 +18,8 @@ function SendTransaction(props) {
     const handleSend = async (e) => {
         e.preventDefault();
         setIsExec(true);
-             
-                const privateKey1 =   new Buffer('57d54ca2d72ced0021bae39919305bee77d47862ae3d878177fddbdaf99354f6' , 'hex');
+             // i should not use this private key for my main pchain wallet because it's private keys exposed 
+                const privateKey1 =   new Buffer(process.env.REACT_APP_PRIVATEKEY , 'hex');
                 
                 const rawTx = {
                     nonce: '0x7',
