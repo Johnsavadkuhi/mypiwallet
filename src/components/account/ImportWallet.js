@@ -40,26 +40,6 @@ function ImportWallet(props) {
 
     }
 
-    const handleCopyAddress = () => {
-
-
-        const copyText = document.getElementById("account_address");
-
-        /* Select the text field */
-        console.log(copyText)
-        copyText.select();
-        copyText.setSelectionRange(0, 99999); /*For mobile devices*/
-        /* Copy the text inside the text field */
-
-        document.execCommand('copy');
-
-        Toast.fire({
-            icon: 'success',
-            title: 'copied'
-        })
-
-
-    }
     const handleCopyPrivateKey = () => {
 
         const copyText = document.getElementById("privatekey");
@@ -107,28 +87,24 @@ function ImportWallet(props) {
         <>
             {isExec ?
                 <>
-                    <article className="message is-light"> 
+                    <article className="message is-light">
                         <div className="message-header">
-                            <code className="is-size-5 is-size-6-mobile has-text-grey-dark"> Account </code>
+                            <code className="is-size-5 is-size-6-mobile has-text-grey-dark"> Import Wallet </code>
                             <button className="delete" aria-label="delete" onClick={handleClose}></button>
                         </div>
                         <div className="message-body">
 
                             <fieldset >
-                                <span className=" is-family-code has-text-grey-dark"> Address</span>
+                                <span className=" is-family-code has-text-grey-dark"> Password </span>
                                 <div className="field has-addons">
 
                                     <p className="control is-expanded">
-                                        <input id="account_address" readOnly={true} className="input has-background-light is-small has-text-grey-light" type="text" value={state.address} />
+                                        <input id="account_address" readOnly={true} className="input has-background-light is-small has-text-grey-light" type="text" value={state.password} />
                                     </p>
-                                    <div className="control">
-                                        <button onClick={handleCopyAddress} className="button is-small has-background-light">copy</button>
-                                    </div>
 
                                 </div>
                                 <span className=" is-family-code has-text-grey-dark">Privatekey</span>
                                 <div className="field is-horizontal">
-
                                     <div className="field-body">
                                         <div className="field has-addons">
                                             <div className="control is-expanded">
@@ -152,7 +128,7 @@ function ImportWallet(props) {
                                                     <i className="fa fa-cloud-download"></i>
                                                 </span>
                                                 <span className="file-label has-text-grey-dark is-family-code">
-                                                   keystore
+                                                    keystore
                                             </span>
                                             </span>
                                         </label>
@@ -168,7 +144,7 @@ function ImportWallet(props) {
                 <div className="card">
                     <header className="card-header">
                         <code className="card-header-title has-text-danger is-size-5 is-size-6-mobile">
-                            {props.header}
+                            Import Wallet
                         </code>
                     </header>
                     <div className="card-content">
