@@ -4,6 +4,7 @@ import { GET_BALANCE, GET_FULL_BALANCE } from '../../request';
 import Moneparam from '../methods_with_one_param';
 import Mthreeparam from '../methods_with_three_param';
 import RadioButton from '../RadioButton';
+import ImportWallet from './ImportWallet';
 const CreateAccount = loadable(() => import('../account/CreateAccount'),
   {
     fallback: <div>
@@ -40,12 +41,28 @@ function Account() {
           <div className="box">
             <p className="title is-5">Select a Method -> </p>
             <RadioButton
+              changed={radioChangeHandler}
+              isSelected={selected === "Balance"}
+              name="answer"
+              id="1"
+              label="Balance"
+              value="Balance"
+            />
+            <RadioButton
               name="answer"
               changed={radioChangeHandler}
-              isSelected={selected === "CreateAccount"}
+              isSelected={selected === "CreateWallet"}
               id="3"
-              label="Create Account"
-              value="CreateAccount"
+              label="Create Wallet"
+              value="CreateWallet"
+            />
+              <RadioButton
+              name="answer"
+              changed={radioChangeHandler}
+              isSelected={selected === "ImportWallet"}
+              id="5"
+              label="Import Wallet"
+              value="ImportWallet"
             />
             <RadioButton
               name="answer"
@@ -55,14 +72,7 @@ function Account() {
               label="Send Transaction"
               value="SendTransaction"
             />
-            <RadioButton
-              changed={radioChangeHandler}
-              isSelected={selected === "Balance"}
-              name="answer"
-              id="1"
-              label="Balance"
-              value="Balance"
-            />
+        
 
             <RadioButton
               name="answer"
@@ -82,9 +92,15 @@ function Account() {
             selected === "Balance" && <Moneparam header="getBalance" request={GET_BALANCE} placeholder="Address" />
           }
           {
-            selected === "CreateAccount" &&
+            selected === "CreateWallet" &&
 
-            <CreateAccount header="Create Account " />
+            <CreateAccount  />
+
+          }
+          {
+            selected === "ImportWallet" &&
+
+            <ImportWallet header="Create Account " />
 
           }
           {
