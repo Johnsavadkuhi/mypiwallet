@@ -85,8 +85,8 @@ function ImportWallet(props) {
 
     return (
         <>
-            {isExec ?
-                <>
+            
+            
                     <article className="message is-light">
                         <div className="message-header">
                             <code className="is-size-5 is-size-6-mobile has-text-grey-dark"> Import Wallet </code>
@@ -110,9 +110,7 @@ function ImportWallet(props) {
                                             <div className="control is-expanded">
                                                 <textarea id="privatekey" readOnly={true} className="textarea has-background-light is-small has-text-grey-light  " value={state.privateKey} />
                                             </div>
-                                            <div className="control">
-                                                <button onClick={handleCopyPrivateKey} className="button is-small height_copy_button has-background-light">copy</button>
-                                            </div>
+                                           
                                         </div>
                                     </div>
                                 </div>
@@ -128,7 +126,7 @@ function ImportWallet(props) {
                                                     <i className="fa fa-cloud-download"></i>
                                                 </span>
                                                 <span className="file-label has-text-grey-dark is-family-code">
-                                                    keystore
+                                                    Import
                                             </span>
                                             </span>
                                         </label>
@@ -137,39 +135,6 @@ function ImportWallet(props) {
                             </div>
                         </div>
                     </article>
-
-                </>
-
-                :
-                <div className="card">
-                    <header className="card-header">
-                        <code className="card-header-title has-text-danger is-size-5 is-size-6-mobile">
-                            Import Wallet
-                        </code>
-                    </header>
-                    <div className="card-content">
-                        <div className="content">
-
-                            <div className="field">
-                                <p className="control has-icons-left">
-                                    <input value={password}
-                                        onChange={handleChange}
-                                        className="input is-small" type="password" placeholder="Password" />
-                                    <span className="icon is-small is-left">
-                                        <i className="fa fa-lock" aria-hidden="true"></i>
-                                    </span>
-                                </p>
-                            </div>
-                            <p id="helper" className="help">{helper}</p>
-
-                            <button onClick={handleClick}
-                                disabled={!(password.length >= 8)}
-                                className="button is-info is-small is-fullwidth has-text-weight-bold" > Create </button>
-                        </div>
-                    </div>
-
-
-                </div>}
         </>
     )
 
