@@ -13,7 +13,7 @@ const CreateAccount = loadable(() => import('../account/CreateAccount'),
       <progress className="progress is-large is-info" max="100">60%</progress>
     </div>
   });
-  const SendTransaction = loadable(() => import('../account/SendTransaction'),
+const SendTransaction = loadable(() => import('../account/SendTransaction'),
   {
     fallback: <div>
       <progress className="progress is-small is-primary" max="100">15%</progress>
@@ -82,15 +82,15 @@ function Account() {
             selected === "Balance" && <Moneparam header="getBalance" request={GET_BALANCE} placeholder="Address" />
           }
           {
-            selected==="SendTransaction" && <SendTransaction  />
-          }
-          {
             selected === "CreateAccount" &&
 
             <CreateAccount header="Create Account " />
 
-
           }
+          {
+            selected === "SendTransaction" && <SendTransaction />
+          }
+
           {
             selected === "FullBalance" && <Mthreeparam header="getFullBalance" request={GET_FULL_BALANCE} placeholder="Address" placeholdertwo="Block Number"
               placeholderthree="Full Proxied" />
