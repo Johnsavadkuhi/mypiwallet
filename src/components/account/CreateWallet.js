@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Account } from '../../pweb3';
 import { Toast, Warning } from '../../popup';
-
+import Container from '../container';
+import Input from '../container/Input';
+import Textarea from '../container/Textarea';
 function CreateAccount(props) {
 
     const [isExec, setIsExec] = useState(false);
@@ -165,6 +167,8 @@ function CreateAccount(props) {
                 </>
 
                 :
+                
+                
                 <div className="card">
                     <header className="card-header">
                         <code className="card-header-title has-text-danger is-size-5 is-size-6-mobile">
@@ -194,6 +198,8 @@ function CreateAccount(props) {
 
 
                 </div>}
+        
+        
         </>
     )
 

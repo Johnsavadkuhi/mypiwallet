@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import loadable from '@loadable/component'
-import { GET_BALANCE, GET_FULL_BALANCE } from '../../request';
+import { GET_BALANCE } from '../../request';
 import Moneparam from '../methods_with_one_param';
-import Mthreeparam from '../methods_with_three_param';
 import RadioButton from '../RadioButton';
 import ImportWallet from './ImportWallet';
-const CreateAccount = loadable(() => import('../account/CreateAccount'),
+const CreateAccount = loadable(() => import('./CreateWallet'),
   {
     fallback: <div>
       <progress className="progress is-small is-primary" max="100">15%</progress>
@@ -14,15 +13,7 @@ const CreateAccount = loadable(() => import('../account/CreateAccount'),
       <progress className="progress is-large is-info" max="100">60%</progress>
     </div>
   });
-const SendTransaction = loadable(() => import('../account/SendTransaction'),
-  {
-    fallback: <div>
-      <progress className="progress is-small is-primary" max="100">15%</progress>
-      <progress className="progress is-danger" max="100">30%</progress>
-      <progress className="progress is-medium is-dark" max="100">45%</progress>
-      <progress className="progress is-large is-info" max="100">60%</progress>
-    </div>
-  });
+
 
 function Account() {
   const [selected, setSelected] = useState("Balance");
@@ -56,7 +47,7 @@ function Account() {
               label="Create Wallet"
               value="CreateWallet"
             />
-              <RadioButton
+            <RadioButton
               name="answer"
               changed={radioChangeHandler}
               isSelected={selected === "ImportWallet"}
@@ -64,24 +55,15 @@ function Account() {
               label="Import Wallet"
               value="ImportWallet"
             />
-            <RadioButton
-              name="answer"
-              changed={radioChangeHandler}
-              isSelected={selected === "SendTransaction"}
-              id="4"
-              label="Send Transaction"
-              value="SendTransaction"
-            />
-        
 
-            <RadioButton
+            {/* <RadioButton
               name="answer"
               changed={radioChangeHandler}
               isSelected={selected === "FullBalance"}
               id="2"
               label="Full Balance"
               value="FullBalance"
-            />
+            /> */}
           </div>
 
 
@@ -94,23 +76,20 @@ function Account() {
           {
             selected === "CreateWallet" &&
 
-            <CreateAccount  />
+            <CreateAccount />
 
           }
           {
             selected === "ImportWallet" &&
 
-            <ImportWallet header="Create Account " />
+            <ImportWallet  />
 
           }
-          {
-            selected === "SendTransaction" && <SendTransaction />
-          }
-
+          {/* 
           {
             selected === "FullBalance" && <Mthreeparam header="getFullBalance" request={GET_FULL_BALANCE} placeholder="Address" placeholdertwo="Block Number"
               placeholderthree="Full Proxied" />
-          }
+          } */}
 
         </div>
       </div>
