@@ -12,7 +12,7 @@ function CreateAccount(props) {
     const [helper, setHelper] = useState('Enter 8 chars as password.');
 
     const handleChange = e => {
-
+//09909455953 
         setPassword(e.target.value);
         if (e.target.value.length === 0) {
             setHelper('password can not be empty.');
@@ -109,7 +109,7 @@ function CreateAccount(props) {
         <>
             {isExec ?
                 <>
-                    <article className="message is-light"> 
+                    <article className="message is-light">
                         <div className="message-header">
                             <code className="is-size-5 is-size-6-mobile has-text-grey-dark"> Account </code>
                             <button className="delete" aria-label="delete" onClick={handleClose}></button>
@@ -154,7 +154,7 @@ function CreateAccount(props) {
                                                     <i className="fa fa-cloud-download"></i>
                                                 </span>
                                                 <span className="file-label has-text-grey-dark is-family-code">
-                                                   keystore
+                                                    keystore
                                             </span>
                                             </span>
                                         </label>
@@ -167,40 +167,19 @@ function CreateAccount(props) {
                 </>
 
                 :
-                
-                
-                <div className="card">
-                    <header className="card-header">
-                        <code className="card-header-title has-text-danger is-size-5 is-size-6-mobile">
-                            Create Wallet 
-                        </code>
-                    </header>
-                    <div className="card-content">
-                        <div className="content">
+                <Container header="Create Wallet">
 
-                            <div className="field">
-                                <p className="control has-icons-left">
-                                    <input value={password}
-                                        onChange={handleChange}
-                                        className="input is-small" type="password" placeholder="Password" />
-                                    <span className="icon is-small is-left">
-                                        <i className="fa fa-lock" aria-hidden="true"></i>
-                                    </span>
-                                </p>
-                            </div>
-                            <p id="helper" className="help">{helper}</p>
-
-                            <button onClick={handleClick}
-                                disabled={!(password.length >= 8)}
-                                className="button is-info is-small is-fullwidth has-text-weight-bold" > Create </button>
-                        </div>
-                    </div>
+                    <Input className="input is-small" value={password} onChange={handleChange} />
+                    <button onClick={handleClick}
+                        disabled={!(password.length >= 8)}
+                        className="button is-info is-small is-fullwidth has-text-weight-bold" > Create </button>
 
 
-                </div>}
-        
-        
+                </Container>
+
+            }
         </>
+            
     )
 
 }

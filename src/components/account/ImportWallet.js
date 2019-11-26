@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import { Account } from '../../pweb3';
+import { Account } from '../../pweb3';
 // import { Toast, Warning } from '../../popup';
 import Container from '../container';
 import Input from '../container/Input';
@@ -7,7 +7,7 @@ import Textarea from '../container/Textarea';
 
 function ImportWallet() {
 
-    const [password, setPassword] = useState('');
+    const [password, setPassword] = useState("");
     const [privateKey, setPrivateKey] = useState('');
     const [helper, setHelper] = useState('Enter 8 chars as password.');
     const [helper1, setHelper1] = useState('Enter a valid privateKey')
@@ -62,12 +62,20 @@ function ImportWallet() {
 
     const handleImport = () => {
 
+        console.log(privateKey);
+        
+        localStorage.setItem(`prv${localStorage.length}` , privateKey) ; 
+        
+        console.log(localStorage.length) ; 
+
+
     }
 
     return (
 
         <Container header="Import Wallet">
 
+               {console.log(password)}
             <Input className="input is-small" value={password}
                 onChange={handleChangePassword}
                 helper={helper}
@@ -76,7 +84,7 @@ function ImportWallet() {
             <Textarea value={privateKey} onChange={handleChangePrivateKey} helper={helper1}/>
 
             <div className="has-text-centered download_btn_margin">
-                <button onClick={handleImport}
+                <button onClick={handleImport} 
                     className="button is-info is-small is-fullwidth has-text-weight-bold" > Import </button>
             </div>
 
