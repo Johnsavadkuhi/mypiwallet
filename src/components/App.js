@@ -6,6 +6,7 @@ import Contracts from './Contracts';
 import Utilities from './Utilities'; 
 import Account from './account/Account';
 import Transactions from './Transactions';
+import Wallet from './wallet'; 
 
 import {
   BrowserRouter as Router,
@@ -29,7 +30,9 @@ function App() {
           <Route exact path="/">
             <Account/>
           </Route>
-
+          <Route path="/wallet">
+            <Wallet/>
+          </Route>
           <Route path="/transactions">
             <Transactions/>
           </Route>
