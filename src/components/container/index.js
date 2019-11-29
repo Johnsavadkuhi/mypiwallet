@@ -7,7 +7,7 @@ function Container(props){
     <article className="message is-light">
                 <div className="message-header">
                     <code className=" has-text-danger is-size-5 is-size-6-mobile"> {props.header} </code> 
-                    
+                    {props.close}
                 </div>
                 <div className="message-body">
 
