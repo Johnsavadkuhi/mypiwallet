@@ -15,8 +15,6 @@ import {
 
 } from "react-router-dom";
 
-
-
 function App() {
 
   return (
@@ -27,26 +25,18 @@ function App() {
 
         <Switch>
 
-          <Route exact path="/">
-            <Account/>
-          </Route>
-          <Route path="/wallet">
-            <Wallet/>
-          </Route>
-          <Route path="/transactions">
-            <Transactions/>
-          </Route>
-          <Route path="/contracts">
-            <Contracts/>
-          </Route>
-          <Route path="/utilities">
-            <Utilities/>
-            </Route>
-            <Route path="/blocks">
-              <Blocks/>
-            </Route>
-        
-
+          <Route exact path="/" component={Account}/>
+          
+          <Route path="/wallet" component={Wallet}/>
+            
+          <Route path="/transactions" component={Transactions}/>
+            
+          <Route path="/contracts" component={Contracts}/>
+          
+          <Route path="/utilities" component={Utilities}/>
+            
+          <Route path="/blocks" component={Blocks}/>
+              
         </Switch>
 
       
