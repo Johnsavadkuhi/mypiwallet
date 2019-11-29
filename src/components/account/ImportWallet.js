@@ -64,8 +64,8 @@ function ImportWallet() {
 
         console.log(privateKey);
         
-        localStorage.setItem(`prv${localStorage.length}` , privateKey) ; 
-        
+        //localStorage.setItem(`prv${localStorage.length}` , privateKey) ; 
+        localStorage.setItem('mywallet' , privateKey)
         console.log(localStorage.length) ; 
 
 
