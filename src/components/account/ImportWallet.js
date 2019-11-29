@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Account } from '../../pweb3';
+// import { Account } from '../../pweb3';
 // import { Toast, Warning } from '../../popup';
 import Container from '../container';
 import Input from '../container/Input';
