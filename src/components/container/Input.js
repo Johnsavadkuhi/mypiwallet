@@ -18,7 +18,7 @@ function Input(props){
 
     </div>
 
-    <p id="helper" className="help">{props.helper}</p>
+    <p id={props.helperId} className="help">{props.helper}</p>
 
 </div>)
 }
