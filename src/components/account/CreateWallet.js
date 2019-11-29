@@ -3,7 +3,6 @@ import { Account } from '../../pweb3';
 import { Toast, Warning } from '../../popup';
 import Container from '../container';
 import Input from '../container/Input';
-import Textarea from '../container/Textarea';
 function CreateAccount(props) {
 
     const [isExec, setIsExec] = useState(false);
@@ -169,7 +168,7 @@ function CreateAccount(props) {
                 :
                 <Container header="Create Wallet">
 
-                    <Input className="input is-small" value={password} onChange={handleChange} />
+                    <Input className="input is-small" value={password} onChange={handleChange} helper={helper}/>
                     <button onClick={handleClick}
                         disabled={!(password.length >= 8)}
                         className="button is-info is-small is-fullwidth has-text-weight-bold" > Create </button>
