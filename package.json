@@ -5,7 +5,6 @@
   "dependencies": {
     "@loadable/component": "^5.10.3",
     "bulma": "^0.8.0",
-    "bulma-divider": "^0.2.0",
     "node-sass": "^4.13.0",
     "pchainjs-tx": "^1.0.8",
     "pweb3": "^1.0.0-beta.62",
