@@ -1,20 +1,23 @@
-import React, { useState , useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Container from '../container';
 import Input from '../container/Input';
 import Tx from 'pchainjs-tx';
-import { GET_TRANSACTION_COUNT , GET_BALANCE} from '../../request/';
+import { GET_TRANSACTION_COUNT, GET_BALANCE } from '../../request/';
 import { Account } from '../../pweb3';
 import Swal from 'sweetalert2'
+import Loader from 'react-loader-spinner'
 
 function Send(props) {
 
     const [to, setTo] = useState('');
     const [piValue, setPiValue] = useState('');
-    const [balance , setBalance] = useState(0);
-    const [helper  , setHelper ] = useState({to : 'Enter wallet address you want send Pi to.' , value : 'Enter the number of Pi to send.'})
-    useEffect (()=>{
+    const [balance, setBalance] = useState(0);
+    const [helper, setHelper] = useState({ to: 'Enter wallet address you want send Pi to.', value: 'Enter the number of Pi to send.' })
+    const [selected, setSelected] = useState('sendForm');
 
-        const pr =  localStorage.getItem('mywallet');
+    useEffect(() => {
+
+        const pr = localStorage.getItem('mywallet');
         const { address } = Account.privateKeyToAccount(pr);
 
         fetch(process.env.REACT_APP_END_POINT, {
@@ -26,15 +29,15 @@ function Send(props) {
         }).then(res => {
             return res.json();
         }).then(resData => {
-            
-            const b = (Number.parseFloat(resData.data.getBalance) / Number.parseFloat(1000000000000000000) ) ; 
-           setBalance('' + b);
+
+            const b = (Number.parseFloat(resData.data.getBalance) / Number.parseFloat(1000000000000000000));
+            setBalance('' + b);
         }).catch(error => {
             console.log(error);
             throw new Error(error);
         });
 
-    } , []); 
+    }, []);
 
     const handleClick = async () => {
 
@@ -49,50 +52,61 @@ function Send(props) {
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, Send!'
-          }).then((result) => {
-            if (result.value) {
+        }).then(async (result) => {
 
-              Swal.fire(
-                'Sent!',
-                'Your Pi has been sent.',
-                'success'
-              )
-            }
-           
-          })
+            setSelected('sending');
+            console.log("selected 1 : " , selected);
 
-        // fetch(process.env.REACT_APP_END_POINT, {
-        //     method: 'POST',
-        //     body: JSON.stringify(GET_TRANSACTION_COUNT(address)),
-        //     headers: {
-        //         "Content-Type": "application/json"
-        //     }
-        // }).then(res => {
-        //     return res.json();
-        // }).then(resData => {
-        //     const p = pr.slice(2).toString();
-        //     const privateKey1 = Buffer.from(p, 'hex');
+            fetch(process.env.REACT_APP_END_POINT, {
+                method: 'POST',
+                body: JSON.stringify(GET_TRANSACTION_COUNT(address)),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }).then(res => {
+                return res.json();
+            }).then(resData => {
+                const p = pr.slice(2).toString();
+                const privateKey1 = Buffer.from(p, 'hex');
+    
+                console.log("nonce : " , (resData.data.getTransactionCount + 1));
+                
+                const rawTx = {
+                    nonce: (resData.data.getTransactionCount),
+                    gasPrice: '0x3B9ACA00',// '0x4A817C800'
+                    gasLimit: '0xA410',
+                    to: '0xEA048c9D9B3D226550bDDb6515a6425153474D8b',
+                    value:'0x2C68AF0BB140000',//'' + (Number.parseFloat(piValue) * 1000000000000000000), 
+                    data: '',
+                    chainId: 'pchain'
+                };
 
-        //     const rawTx = {
-        //         nonce: resData.data.getTransactionCount + 1,
-        //         gasPrice: '0x4A817C800',
-        //         gasLimit: '0x5208',
-        //         to: to,
-        //         value: '' + (Number.parseFloat(piValue) * 1000000000000000000), 
-        //         data: '',
-        //         chainId: 'pchain'
-        //     };
+                console.log("RawTX Value : " , rawTx.value ); 
+    
+                const tx = new Tx(rawTx);
+                tx.sign(privateKey1);
+                const serializedTx = tx.serialize();
+                console.log(serializedTx.toString('hex'));
+                
+    
+            }).catch(error => {
+                console.log(error);
+                throw new Error(error);
+    
+            }).finally( async()=>{
+    
+                console.log("finally .... "); 
+                setSelected('sendForm'); 
+                console.log("selected : " , selected );
+               
+            })
+    
+       
+            
 
-        //     const tx = new Tx(rawTx);
-        //     tx.sign(privateKey1);
-        //     const serializedTx = tx.serialize();
-        //     console.log(serializedTx.toString('hex'));
+        })
 
-        // }).catch(error => {
-        //     console.log(error);
-        //     throw new Error(error);
-        // });
-
+      
 
     }
 
@@ -105,27 +119,27 @@ function Send(props) {
     const handleChangeValue = e => {
 
         setPiValue(e.target.value);
-        if(e.target.value.length === 0 ){
-            setHelper({to:'Enter wallet address you want send Pi to.',value:'This field can not be empty.'});
+        if (e.target.value.length === 0) {
+            setHelper({ to: 'Enter wallet address you want send Pi to.', value: 'This field can not be empty.' });
             document.getElementById('valueTo').classList.add('is-danger');
             document.getElementById('valueHelperTo').classList.add('is-danger');
 
 
 
-        }else if(e.target.value === '0'|| Number.parseFloat(e.target.value) < 0  ){
-            setHelper({to:'Enter wallet address you want send Pi to.',value:'Invalid value.'});
+        } else if (e.target.value === '0' || Number.parseFloat(e.target.value) < 0) {
+            setHelper({ to: 'Enter wallet address you want send Pi to.', value: 'Invalid value.' });
             document.getElementById('valueTo').classList.add('is-danger');
             document.getElementById('valueHelperTo').classList.add('is-danger');
 
 
         }
-        else if(e.target.value > balance ){
-            setHelper({to:'Enter wallet address you want send Pi to.',value:'The balance is not enough.'});
+        else if (e.target.value > balance) {
+            setHelper({ to: 'Enter wallet address you want send Pi to.', value: 'The balance is not enough.' });
             document.getElementById('valueTo').classList.add('is-danger');
             document.getElementById('valueHelperTo').classList.add('is-danger');
 
-        }else {
-            setHelper({to:'Enter wallet address you want send Pi to.',value:'Ok!'});
+        } else {
+            setHelper({ to: 'Enter wallet address you want send Pi to.', value: 'Ok!' });
             document.getElementById('valueTo').classList.remove('is-danger');
             document.getElementById('valueHelperTo').classList.remove('is-danger');
             document.getElementById('valueTo').classList.add('is-success');
@@ -137,19 +151,40 @@ function Send(props) {
 
     return (<>
 
-        <Container header="Send Pi" close={<button onClick={props.onClick} className="delete" aria-label="delete"></button>}>
+          <Container header="Send Pi" close={<button onClick={props.onClick} className="delete" aria-label="delete"></button>}>
 
-            <Input value={to} onChange={handleChangeTo} id="addressTo" helperId ="addressHelperTo"
+            {
+                selected === "sendForm" && 
+
+                <>
+                <Input value={to} onChange={handleChangeTo} id="addressTo" helperId="addressHelperTo"
                 type="text" placeholder="To " className="input is-small" icon="hashtag" helper={helper.to} />
-            <Input value={piValue} onChange={handleChangeValue} id="valueTo" helperId ="valueHelperTo"
-                type="number" placeholder="PI Value" className="input is-small" icon="rub" helper={helper.value } />
+                <Input value={piValue} onChange={handleChangeValue} id="valueTo" helperId="valueHelperTo"
+                type="number" placeholder="PI Value" className="input is-small" icon="rub" helper={helper.value} />
 
             <button onClick={handleClick}
                 className="button is-info is-small is-fullwidth has-text-weight-bold" >
                 Send
             </button>
+            </>
 
-        </Container>
+            }
+               
+           {
+               selected === "sending" && 
+               <div className="has-text-centered">
+               <Loader 
+               type="Oval"
+               color="#00BFFF"
+               height={100}
+               width={100}/>
+               </div>
+           }
+
+
+            </Container>
+        
+        
 
     </>);
 }
