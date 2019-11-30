@@ -26,8 +26,9 @@ function Moneparam(props) {
         }).then(res => {
             return res.json();
         }).then(resData => {
+            console.log("resData : " ,(  resData.data.getBalance / 1000000000000000000 )); 
             setData(resData);
-        }).catch(error => {
+        }).catch(error => { 
             console.log(error);
             throw error;
         })
