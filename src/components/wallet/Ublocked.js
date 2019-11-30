@@ -9,28 +9,28 @@ function Unlocked(props) {
 
     const handleClickSend = () => {
 
-        setSelected('send'); 
+        setSelected('send');
 
     }
-    
-    const handleClickReceive = ()=>{
 
-        setSelected('receive'); 
-    
+    const handleClickReceive = () => {
+
+        setSelected('receive');
+
     }
 
-    const handleClose=()=>{
-        setSelected('wallet'); 
+    const handleClose = () => {
+        setSelected('wallet');
     }
-    
+
     return (<>
-        
+
         {
-            selected === "send" && <Send onClick={handleClose}/>
+            selected === "send" && <Send onClick={handleClose} />
         }
 
         {
-          selected === "wallet" &&
+            selected === "wallet" &&
 
             <div className="card">
                 <header className="card-header">
@@ -44,7 +44,7 @@ function Unlocked(props) {
                         </a>
 
                         <a onClick={handleClickReceive}
-                         href=" #" className="icon" style={{ marginRight: '10px' }}>
+                            href=" #" className="icon" style={{ marginRight: '10px' }}>
                             <i className="fa fa-qrcode" ></i>
                         </a>
 
@@ -67,8 +67,8 @@ function Unlocked(props) {
         }
 
         {
-            selected==="receive" &&
-            <Receive onClick={handleClose}/>
+            selected === "receive" &&
+            <Receive onClick={handleClose} />
         }
 
     </>)
