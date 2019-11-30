@@ -80,9 +80,9 @@ export const GET_TRANSACTION = function (input) {
     }
 }
 
-export const GET_TRANSACTION_COUNT = function(input ){
+export const GET_TRANSACTION_COUNT = function (input) {
     return {
-        query :`
+        query: `
 
         query{
             getTransactionCount(address:"${input}")
@@ -92,9 +92,9 @@ export const GET_TRANSACTION_COUNT = function(input ){
     }
 }
 
-export const GET_BALANCE = function(input ){
+export const GET_BALANCE = function (input) {
     return {
-        query :`
+        query: `
 
         query{
             getBalance(address:"${input}")
@@ -104,9 +104,9 @@ export const GET_BALANCE = function(input ){
     }
 }
 
-export const GET_TRANSACTION_RECEIPT = function(input ){
+export const GET_TRANSACTION_RECEIPT = function (input) {
     return {
-        query :`
+        query: `
 
         query{
             getTransactionReceipt(transactionHash:"${input}"){
@@ -126,9 +126,9 @@ export const GET_TRANSACTION_RECEIPT = function(input ){
         `
     }
 }
-export const GET_BLOCK_TRANSACTION_COUNT = function(input ){
+export const GET_BLOCK_TRANSACTION_COUNT = function (input) {
     return {
-        query :`
+        query: `
 
         query{
             getBlockTransactionCount(numberBlock:"${input}")
@@ -138,9 +138,9 @@ export const GET_BLOCK_TRANSACTION_COUNT = function(input ){
     }
 }
 
-export const GET_TRANSACTION_FROM_BLOCK = function(input , input1){
+export const GET_TRANSACTION_FROM_BLOCK = function (input, input1) {
     return {
-        query :`
+        query: `
         query{
             getTransactionFromBlock(numberBlock:"${input}" , transactionIndex :"${input1}"){
                 hash
@@ -161,9 +161,9 @@ export const GET_TRANSACTION_FROM_BLOCK = function(input , input1){
 }
 
 
-export const GET_FULL_BALANCE = function(input , input1 , input2=false ){
+export const GET_FULL_BALANCE = function (input, input1, input2 = false) {
     return {
-        query :`
+        query: `
         query{
             getFullBalance(address:"${input}" , numberBlock :"${input1}" , fullProxied:${input2}){
                 balance
@@ -178,6 +178,19 @@ export const GET_FULL_BALANCE = function(input , input1 , input2=false ){
     PendingRefundBalance
   }
             }
+        }
+        
+        `
+    }
+}
+
+export const SEND_RAW_TRANSACTION = function (input) {
+
+    return {
+        query: `
+        
+        mutation {
+            sendRawTransaction(signedTransaction:"${input}")
         }
         
         `
