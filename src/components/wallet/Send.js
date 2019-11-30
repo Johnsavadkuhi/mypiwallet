@@ -69,19 +69,21 @@ function Send(props) {
                 const p = pr.slice(2).toString();
                 const privateKey1 = Buffer.from(p, 'hex');
     
-                console.log("nonce : " , (resData.data.getTransactionCount + 1));
+                console.log("nonce : " , (resData.data.getTransactionCount ));
                 
                 const rawTx = {
                     nonce: (resData.data.getTransactionCount),
                     gasPrice: '0x3B9ACA00',// '0x4A817C800'
                     gasLimit: '0xA410',
-                    to: '0xEA048c9D9B3D226550bDDb6515a6425153474D8b',
-                    value:'0x2C68AF0BB140000',//'' + (Number.parseFloat(piValue) * 1000000000000000000), 
+                    to: to , //'0xEA048c9D9B3D226550bDDb6515a6425153474D8b',
+                    value:'0x'+(Number.parseFloat(piValue) * 1000000000000000000 ).toString(16),//'0x2C68AF0BB140000',//'' + (Number.parseFloat(piValue) * 1000000000000000000)
                     data: '',
                     chainId: 'pchain'
                 };
 
                 console.log("RawTX Value : " , rawTx.value ); 
+                console.log("to : " , rawTx.to);
+                
     
                 const tx = new Tx(rawTx);
                 tx.sign(privateKey1);
@@ -100,13 +102,7 @@ function Send(props) {
                 console.log("selected : " , selected );
                
             })
-    
-       
-            
-
         })
-
-      
 
     }
 
