@@ -190,7 +190,23 @@ export const SEND_RAW_TRANSACTION = function (input) {
     return {
         query: `
         mutation {
-            sendRawTransaction(signedTransaction:"${input}") 
+            sendRawTransaction(signedTransaction:"${input}"){
+                blockHash : String 
+                blockNumber :String
+                contractAddress:String
+                cumulativeGasUsed:String
+                from:String
+                gasUsed:String
+                logs:[String]
+                logsBloom:String
+                status:Boolean
+                to:String
+                transactionHash:String
+                transactionIndex:Int
+                nonce:String
+                gas :String
+
+            }
         }  
         `
     }
