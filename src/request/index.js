@@ -1,3 +1,4 @@
+
 export const GET_BLOCK_NUMBER = {
     query: `
     query {
@@ -191,7 +192,6 @@ export const SEND_RAW_TRANSACTION = function (input) {
         mutation {
             sendRawTransaction(signedTransaction:"${input}"){
                 blockHash
-                transactionHash
                 blockNumber
                 contractAddress
                 cumulativeGasUsed
