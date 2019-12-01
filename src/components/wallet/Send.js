@@ -7,6 +7,7 @@ import { Account } from '../../pweb3';
 import Swal from 'sweetalert2'
 import Loader from 'react-loader-spinner'
 import Fetch from '../../request/Fetch';
+import TransactionSent from '../wallet/TransactionSent'; 
 
 function Send(props) {
 
@@ -15,6 +16,8 @@ function Send(props) {
     const [balance, setBalance] = useState(0);
     const [helper, setHelper] = useState({ to: 'Enter wallet address you want send Pi to.', value: 'Enter the number of Pi to send.' })
     const [selected, setSelected] = useState('sendForm');
+    const [ts , setTs] = useState({}); 
+
 
     useEffect(() => {
 
@@ -45,8 +48,6 @@ function Send(props) {
             confirmButtonText: 'Yes, Send!'
         }).then(async (result) => {
 
-            console.log("result : " , result); 
-
             if (result.value ) {
 
                 setSelected('sending');
@@ -74,8 +75,10 @@ function Send(props) {
                 console.log("s : ", s); 
                 //console.log(serializedTx.toString('hex'));
 
-                // const transactionHash = await(Fetch(SEND_RAW_TRANSACTION(s))); 
-                // console.log(" in line 78 : " , transactionHash);
+                 const transactionHash = await(Fetch(SEND_RAW_TRANSACTION(('0x' + serializedTx.toString('hex'))))); 
+                setTs(transactionHash); 
+                 console.log(" in line 78 : " , transactionHash);
+                setSelected('transactionSent');
 
             }
         })
@@ -151,6 +154,10 @@ function Send(props) {
                         height={100}
                         width={100} />
                 </div>
+            }
+            {
+                selected=== "transactionSent" && 
+                <TransactionSent />
             }
 
 
