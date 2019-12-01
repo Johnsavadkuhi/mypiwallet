@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Container from '../container';
 import Input from '../container/Input';
 import Tx from 'pchainjs-tx';
-import { GET_TRANSACTION_COUNT, GET_BALANCE } from '../../request/';
+import { GET_TRANSACTION_COUNT, GET_BALANCE, SEND_RAW_TRANSACTION} from '../../request/';
 import { Account } from '../../pweb3';
 import Swal from 'sweetalert2'
 import Loader from 'react-loader-spinner'
@@ -55,7 +55,7 @@ function Send(props) {
         }).then(async (result) => {
 
             setSelected('sending');
-            console.log("selected 1 : " , selected);
+            console.log("selected 1 : ", selected);
 
             fetch(process.env.REACT_APP_END_POINT, {
                 method: 'POST',
@@ -68,39 +68,55 @@ function Send(props) {
             }).then(resData => {
                 const p = pr.slice(2).toString();
                 const privateKey1 = Buffer.from(p, 'hex');
-    
-                console.log("nonce : " , (resData.data.getTransactionCount ));
-                
+
+                console.log("nonce : ", (resData.data.getTransactionCount));
+
                 const rawTx = {
                     nonce: (resData.data.getTransactionCount),
                     gasPrice: '0x3B9ACA00',// '0x4A817C800'
                     gasLimit: '0xA410',
-                    to: to , //'0xEA048c9D9B3D226550bDDb6515a6425153474D8b',
-                    value:'0x'+(Number.parseFloat(piValue) * 1000000000000000000 ).toString(16),//'0x2C68AF0BB140000',//'' + (Number.parseFloat(piValue) * 1000000000000000000)
+                    to: to, //'0xEA048c9D9B3D226550bDDb6515a6425153474D8b',
+                    value: '0x' + (Number.parseFloat(piValue) * 1000000000000000000).toString(16),//'0x2C68AF0BB140000',//'' + (Number.parseFloat(piValue) * 1000000000000000000)
                     data: '',
                     chainId: 'pchain'
                 };
 
-                console.log("RawTX Value : " , rawTx.value ); 
-                console.log("to : " , rawTx.to);
-                
-    
                 const tx = new Tx(rawTx);
                 tx.sign(privateKey1);
                 const serializedTx = tx.serialize();
                 console.log(serializedTx.toString('hex'));
-                
-    
+
+                //sendRawTransaction 
+
+                fetch(process.env.REACT_APP_END_POINT ,{
+                    method: 'POST',
+                    body: JSON.stringify(SEND_RAW_TRANSACTION(serializedTx)),
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                }).then(res1=>{
+                    return res1.json(); 
+                }).then(resData1=>{
+
+                    console.log("transaction Hash : " , resData1); 
+
+
+                }).catch(error=>{
+                    throw new Error(error); 
+                })
+
+//End of sendRawTransaction 
+
             }).catch(error => {
                 console.log(error);
                 throw new Error(error);
-    
-            }).finally( async()=>{
-    
-                console.log("finally .... "); 
-                setSelected('sendForm'); 
-                console.log("selected : " , selected );
-               
+
+            }).finally(async () => {
+
+                console.log("finally .... ");
+                setSelected('sendForm');
+                console.log("selected : ", selected);
+
             })
         })
 
@@ -147,40 +163,40 @@ function Send(props) {
 
     return (<>
 
-          <Container header="Send Pi" close={<button onClick={props.onClick} className="delete" aria-label="delete"></button>}>
+        <Container header="Send Pi" close={<button onClick={props.onClick} className="delete" aria-label="delete"></button>}>
 
             {
-                selected === "sendForm" && 
+                selected === "sendForm" &&
 
                 <>
-                <Input value={to} onChange={handleChangeTo} id="addressTo" helperId="addressHelperTo"
-                type="text" placeholder="To " className="input is-small" icon="hashtag" helper={helper.to} />
-                <Input value={piValue} onChange={handleChangeValue} id="valueTo" helperId="valueHelperTo"
-                type="number" placeholder="PI Value" className="input is-small" icon="rub" helper={helper.value} />
+                    <Input value={to} onChange={handleChangeTo} id="addressTo" helperId="addressHelperTo"
+                        type="text" placeholder="To " className="input is-small" icon="hashtag" helper={helper.to} />
+                    <Input value={piValue} onChange={handleChangeValue} id="valueTo" helperId="valueHelperTo"
+                        type="number" placeholder="PI Value" className="input is-small" icon="rub" helper={helper.value} />
 
-            <button onClick={handleClick}
-                className="button is-info is-small is-fullwidth has-text-weight-bold" >
-                Send
-            </button>
-            </>
+                    <button onClick={handleClick}
+                        className="button is-info is-small is-fullwidth has-text-weight-bold" >
+                        Send
+                    </button>
+                </>
 
             }
-               
-           {
-               selected === "sending" && 
-               <div className="has-text-centered">
-               <Loader 
-               type="Oval"
-               color="#00BFFF"
-               height={100}
-               width={100}/>
-               </div>
-           }
+
+            {
+                selected === "sending" &&
+                <div className="has-text-centered">
+                    <Loader
+                        type="Oval"
+                        color="#00BFFF"
+                        height={100}
+                        width={100} />
+                </div>
+            }
 
 
-            </Container>
-        
-        
+        </Container>
+
+
 
     </>);
 }
