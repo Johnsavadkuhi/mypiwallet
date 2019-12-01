@@ -74,16 +74,9 @@ function Send(props) {
                 console.log("s : ", s); 
                 //console.log(serializedTx.toString('hex'));
 
-                    Fetch(SEND_RAW_TRANSACTION(s)).then(data =>{
-                        console.log("data : " , data);  
-                        setSelected('sendForm');
+                // const transactionHash = await(Fetch(SEND_RAW_TRANSACTION(s))); 
+                // console.log(" in line 78 : " , transactionHash);
 
-                    }).catch(error=>{
-                        
-                        console.log(error); 
-                        throw new Error(error); 
-
-                    });
             }
         })
 
