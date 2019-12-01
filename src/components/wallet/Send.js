@@ -90,19 +90,31 @@ function Send(props) {
 
                 fetch(process.env.REACT_APP_END_POINT ,{
                     method: 'POST',
-                    body: JSON.stringify(SEND_RAW_TRANSACTION(serializedTx)),
+                    body: JSON.stringify(SEND_RAW_TRANSACTION('0x' + serializedTx.toString('hex'))),
                     headers: {
                         "Content-Type": "application/json"
                     }
                 }).then(res1=>{
+
                     return res1.json(); 
+
                 }).then(resData1=>{
 
+                    resData1.then(r=>{
+                        console.log("rrrr r: ", r ); 
+                    })
                     console.log("transaction Hash : " , resData1); 
 
 
                 }).catch(error=>{
                     throw new Error(error); 
+
+                }).finally(async ()=>{
+
+                    console.log("finally .... ");
+                    setSelected('sendForm');
+                    console.log("selected : ", selected);
+    
                 })
 
 //End of sendRawTransaction 
@@ -110,12 +122,6 @@ function Send(props) {
             }).catch(error => {
                 console.log(error);
                 throw new Error(error);
-
-            }).finally(async () => {
-
-                console.log("finally .... ");
-                setSelected('sendForm');
-                console.log("selected : ", selected);
 
             })
         })
