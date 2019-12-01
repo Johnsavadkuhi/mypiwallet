@@ -188,10 +188,10 @@ export const SEND_RAW_TRANSACTION = function (input) {
 
     return {
         query: `
-        
         mutation {
             sendRawTransaction(signedTransaction:"${input}"){
                 blockHash
+                transactionHash
                 blockNumber
                 contractAddress
                 cumulativeGasUsed
@@ -204,8 +204,7 @@ export const SEND_RAW_TRANSACTION = function (input) {
                 nonce
                 gas
             }
-        }
-        
+        }  
         `
     }
 }
