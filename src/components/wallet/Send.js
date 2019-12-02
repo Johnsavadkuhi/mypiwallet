@@ -46,6 +46,7 @@ function Send(props) {
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, Send!'
+
         }).then(async (result) => {
 
             if (result.value ) {
@@ -53,11 +54,9 @@ function Send(props) {
                 setSelected('sending');
 
                 const { data } = await Fetch(GET_TRANSACTION_COUNT(address));
+                
                 const p = pr.slice(2).toString();
                 const privateKey1 = Buffer.from(p, 'hex');
-
-                //should be remove 
-                console.log("transaction Count : ", data.getTransactionCount);
 
                 const rawTx = {
                     nonce: (data.getTransactionCount),
@@ -72,15 +71,27 @@ function Send(props) {
                  tx.sign(privateKey1);
                 const serializedTx = await  tx.serialize();
                 const s = '0x' + serializedTx.toString('hex') ; 
-                console.log("s : ", s); 
-                //console.log(serializedTx.toString('hex'));
+                const transactionHash  = await Fetch(SEND_RAW_TRANSACTION(s)) 
 
-                 const transactionHash = await(Fetch(SEND_RAW_TRANSACTION(('0x' + serializedTx.toString('hex'))))); 
                 setTs(transactionHash); 
-                 console.log(" in line 78 : " , transactionHash);
-                setSelected('transactionSent');
 
-            }
+                Swal.fire({
+                    title: 'Sent Successfully!',
+                     text: `${piValue} sent to destination wallet`,
+                    icon: 'success',
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ok'
+                }).then(()=>{
+                 
+                    setSelected('transactionSent');
+                    
+                })
+                
+                //setTs(transactionHash); 
+                 //console.log(" in line 78 : " , transactionHash);
+                
+            } 
         })
 
     }
@@ -125,7 +136,7 @@ function Send(props) {
     }
 
     return (<>
-
+{console.log("ts : " , ts)}
         <Container header="Send Pi" close={<button onClick={props.onClick} className="delete" aria-label="delete"></button>}>
 
             {
@@ -135,12 +146,13 @@ function Send(props) {
                     <Input value={to} onChange={handleChangeTo} id="addressTo" helperId="addressHelperTo"
                         type="text" placeholder="To " className="input is-small" icon="hashtag" helper={helper.to} />
                     <Input value={piValue} onChange={handleChangeValue} id="valueTo" helperId="valueHelperTo"
-                        type="number" placeholder="PI Value" className="input is-small" icon="rub" helper={helper.value} />
+                        type="number" placeholder={`Balance : ${balance}`} className="input is-small" icon="rub" helper={helper.value} />
 
                     <button onClick={handleClick}
                         className="button is-info is-small is-fullwidth has-text-weight-bold" >
                         Send
                     </button>
+                    
                 </>
 
             }
@@ -157,7 +169,7 @@ function Send(props) {
             }
             {
                 selected=== "transactionSent" && 
-                <TransactionSent />
+                <TransactionSent info={ts}/>
             }
 
 
