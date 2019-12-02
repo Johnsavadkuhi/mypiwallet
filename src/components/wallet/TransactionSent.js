@@ -3,7 +3,12 @@ import React from 'react';
 function TransactionSent(props){
 
     return (<>
-    <lable>Transaction Hash </lable>
+    <div className="box">
+
+<p >Transaction Hash : {props.info.data.sendRawTransaction.transactionHash}</p>
+
+
+    </div>
     </>); 
 }
 
