@@ -5,8 +5,7 @@ function TransactionSent(props){
     return (<>
     <div className="box">
 
-<p >Transaction Hash : {props.info.data.sendRawTransaction.transactionHash}</p>
-
+        
 
     </div>
     </>); 
