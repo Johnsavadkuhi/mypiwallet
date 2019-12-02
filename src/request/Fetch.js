@@ -11,7 +11,6 @@ async function Fetch(query) {
         });
 
     const data = await response.json();
-    console.log("Transaction Hash Data : ", data);
     return data;
 }
 
