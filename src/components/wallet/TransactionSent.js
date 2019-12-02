@@ -7,8 +7,8 @@ function TransactionSent(props){
     return (<>
     <div className="box">
 
-        <Input className="input is-small " value ={props.info.data.sendRawTransaction.transactionHash} />
-        <Textarea />
+        <Input className="input is-small " value ={props.info.data.sendRawTransaction.blockNumber} />
+        <Textarea value ={props.info.data.sendRawTransaction.transactionHash} />
 
     </div>
     </>); 
