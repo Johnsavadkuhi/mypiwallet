@@ -166,17 +166,17 @@ export const GET_FULL_BALANCE = function (input, input1, input2 = false) {
     return {
         query: `
         query{
-            getFullBalance(address:"${input}" , numberBlock :"${input1}" , fullProxied:${input2}){
-                balance
-  delegateBalance
-  depositBalance
-  depositProxiedBalance
-  pendingRefundBalance
-  proxiedBalance
-  proxied_detail{
-      ProxiedBalance
-    DepositProxiedBalance 
-    PendingRefundBalance
+        getFullBalance(address:"${input}" , numberBlock :"${input1}" , fullProxied:${input2}){
+        balance
+        delegateBalance
+        depositBalance
+        depositProxiedBalance
+        pendingRefundBalance
+        proxiedBalance
+        proxied_detail{
+        ProxiedBalance
+        DepositProxiedBalance 
+        PendingRefundBalance
   }
             }
         }
@@ -189,23 +189,11 @@ export const SEND_RAW_TRANSACTION = function (input) {
 
     return {
         query: `
-        mutation {
+        query{
             sendRawTransaction(signedTransaction:"${input}"){
-                blockHash : String 
-                blockNumber :String
-                contractAddress:String
-                cumulativeGasUsed:String
-                from:String
-                gasUsed:String
-                logs:[String]
-                logsBloom:String
-                status:Boolean
-                to:String
-                transactionHash:String
-                transactionIndex:Int
-                nonce:String
-                gas :String
-
+                
+                blockNumber
+                transactionHash               
             }
         }  
         `
