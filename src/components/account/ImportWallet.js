@@ -1,16 +1,20 @@
 import React, { useState } from 'react';
-// import { Account } from '../../pweb3';
-// import { Toast, Warning } from '../../popup';
 import Container from '../container';
 import Input from '../container/Input';
 import Textarea from '../container/Textarea';
+import { Account } from '../../pweb3';
+import Wallet from '../wallet';
 
 function ImportWallet() {
 
     const [password, setPassword] = useState("");
     const [privateKey, setPrivateKey] = useState('');
     const [helper, setHelper] = useState('Enter 8 chars as password.');
-    const [helper1, setHelper1] = useState('Enter a valid privateKey')
+    const [helper1, setHelper1] = useState('Enter a valid privateKey');
+    const [helper2, setHelper2] = useState('Enter a name for Wallet');
+    const [name, setName] = useState('');
+
+
 
     const handleChangePrivateKey = e => {
 
@@ -38,7 +42,7 @@ function ImportWallet() {
     }
     const handleChangePassword = e => {
 
-        setPassword(e.target.vlaue);
+        setPassword(e.target.value);
 
         if (e.target.value.length === 0) {
             setHelper('password can not be empty.');
@@ -60,14 +64,38 @@ function ImportWallet() {
 
     }
 
-    const handleImport = () => {
+    const handleChangeName = (e) => {
 
-        console.log(privateKey);
-        
-        //localStorage.setItem(`prv${localStorage.length}` , privateKey) ; 
-        localStorage.setItem('mywallet' , privateKey)
-        console.log(localStorage.length) ; 
+        setName(e.target.value);
 
+        if (localStorage.getItem(e.target.value) != null) {
+            setHelper2('This name already exist!');
+        }
+        else if (e.target.value.length === 0) {
+            setHelper2('This field can not be empty.');
+        } else {
+            setHelper2('Ok!');
+        }
+    }
+
+    const handleImport = async () => {
+
+        const myWallet = {
+            address: Account.privateKeyToAccount(privateKey).address,
+            privateKey: null
+        };
+
+        if (localStorage.getItem(name) === null) {
+
+            const encrypted_privateKey = Account.encrypt(privateKey, password);
+            myWallet.privateKey= JSON.stringify(encrypted_privateKey) ; 
+            localStorage.setItem(name, JSON.stringify(myWallet) ) ;
+
+        } else {
+
+            alert('The name is already exist.');
+
+        }
 
     }
 
@@ -75,16 +103,24 @@ function ImportWallet() {
 
         <Container header="Import Wallet">
 
-               {console.log(password)}
-            <Input className="input is-small" value={password}
+            <Input className=" is-small" value={name}
+                onChange={handleChangeName}
+                helper={helper2}
+                icon="registered"
+                placeholder="Name" />
+
+            <Input className=" is-small" value={password}
                 onChange={handleChangePassword}
                 helper={helper}
+                icon="lock"
+                placeholder="Password"
+                id="helper"
             />
 
-            <Textarea value={privateKey} onChange={handleChangePrivateKey} helper={helper1}/>
+            <Textarea value={privateKey} onChange={handleChangePrivateKey} helper={helper1} />
 
             <div className="has-text-centered download_btn_margin">
-                <button onClick={handleImport} 
+                <button onClick={handleImport}
                     className="button is-info is-small is-fullwidth has-text-weight-bold" > Import </button>
             </div>
 
