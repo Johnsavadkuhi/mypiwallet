@@ -141,47 +141,47 @@ function Send(props) {
 
     const handleChangePassword = e => {
 
-        setPassword(e.target.value ); 
-        
+        setPassword(e.target.value);
+
     }
 
     const handleSendClick = () => {
 
-                //  setSelected('sending');
-        
-            //     const { data } = await Fetch(GET_TRANSACTION_COUNT(address));
-            //     const p = decrypted_privateKey.slice(2).toString();
-            //     const privateKey1 = Buffer.from(p, 'hex');
+        setSelected('sending');
 
-            //     const rawTx = {
-            //         nonce: (data.getTransactionCount),
-            //         gasPrice: '0x3B9ACA00',// '0x4A817C800'
-            //         gasLimit: '0xA410',
-            //         to: to, //'0xEA048c9D9B3D226550bDDb6515a6425153474D8b',
-            //         value: '0x' + (Number.parseFloat(piValue) * 1000000000000000000).toString(16),
-            //         data: '',
-            //         chainId: 'pchain'
-            //     };
-            //     const tx = new Tx(rawTx);
-            //     tx.sign(privateKey1);
-            //     const serializedTx = await tx.serialize();
-            //     const s = '0x' + serializedTx.toString('hex');
-            //     const transactionHash = await Fetch(SEND_RAW_TRANSACTION(s))
+        //     const { data } = await Fetch(GET_TRANSACTION_COUNT(address));
+        //     const p = decrypted_privateKey.slice(2).toString();
+        //     const privateKey1 = Buffer.from(p, 'hex');
 
-            //     setTs(transactionHash);
+        //     const rawTx = {
+        //         nonce: (data.getTransactionCount),
+        //         gasPrice: '0x3B9ACA00',// '0x4A817C800'
+        //         gasLimit: '0xA410',
+        //         to: to, //'0xEA048c9D9B3D226550bDDb6515a6425153474D8b',
+        //         value: '0x' + (Number.parseFloat(piValue) * 1000000000000000000).toString(16),
+        //         data: '',
+        //         chainId: 'pchain'
+        //     };
+        //     const tx = new Tx(rawTx);
+        //     tx.sign(privateKey1);
+        //     const serializedTx = await tx.serialize();
+        //     const s = '0x' + serializedTx.toString('hex');
+        //     const transactionHash = await Fetch(SEND_RAW_TRANSACTION(s))
 
-            //     Swal.fire({
-            //         title: 'Sent Successfully!',
-            //         text: `${piValue} sent to destination wallet`,
-            //         icon: 'success',
-            //         confirmButtonColor: '#3085d6',
-            //         cancelButtonColor: '#d33',
-            //         confirmButtonText: 'Ok'
-            //     });
+        //     setTs(transactionHash);
 
-            //     setSelected('transactionSent');
+        //     Swal.fire({
+        //         title: 'Sent Successfully!',
+        //         text: `${piValue} sent to destination wallet`,
+        //         icon: 'success',
+        //         confirmButtonColor: '#3085d6',
+        //         cancelButtonColor: '#d33',
+        //         confirmButtonText: 'Ok'
+        //     });
 
-            // }
+        //     setSelected('transactionSent');
+
+        // }
 
     }
     return (<>
@@ -224,11 +224,12 @@ function Send(props) {
         }
 
         {selected === 'passwordForm' &&
-         <Container header="Enter Password">
-        <PasswordForm value={password} onClick={handleSendClick} onChange={handleChangePassword} helper={passHelper}/>
-        </Container>
+        
+            <Container header="Enter Password">
+                <PasswordForm value={password} onClick={handleSendClick} onChange={handleChangePassword} helper={passHelper} />
+            </Container>
 
-    }
+        }
     </>);
 }
 
