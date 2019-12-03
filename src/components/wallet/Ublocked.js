@@ -23,10 +23,14 @@ function Unlocked(props) {
         setSelected('wallet');
     }
 
+    const item = props.name ; 
+
     return (<>
+    <br/>
 
         {
-            selected === "send" && <Send onClick={handleClose} />
+            selected === "send" && 
+            <Send onClick={handleClose} name={item} />
         }
 
         {
@@ -70,7 +74,7 @@ function Unlocked(props) {
             selected === "receive" &&
             <Receive onClick={handleClose} />
         }
-
+<br/>
     </>)
 }
 
