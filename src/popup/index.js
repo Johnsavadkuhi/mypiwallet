@@ -1,5 +1,4 @@
 import Swal from 'sweetalert2'
-
 export const Toast = Swal.mixin({
     toast: true,
     position: 'top-end',
@@ -11,7 +10,6 @@ export const Toast = Swal.mixin({
       toast.addEventListener('mouseleave', Swal.resumeTimer)
     }
   })
-
   export const Warning = Swal.mixin({
     toast:false ,
     title : 'Keep Safe ',
