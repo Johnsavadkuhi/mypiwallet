@@ -5,7 +5,7 @@ import Blocks from './Blocks';
 import Contracts from './Contracts'; 
 import Utilities from './Utilities'; 
 import Account from './account/Account';
-import Transactions from './Transactions';
+import Transactions from './transaction/Transactions';
 import Wallet from './wallet'; 
 
 import {
