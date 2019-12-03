@@ -18,9 +18,18 @@ function ImportWallet() {
         setPassword('') ; 
         setPrivateKey ('');
         setHelper('Enter 8 chars as password.');
+        setHelper1('Enter a valid privateKey')
         setHelper2('Enter a name for Wallet') 
         setName('');
+        document.getElementById('helper').classList.remove('is-success'); 
+        document.getElementById('helper1').classList.remove('is-success');
+        document.getElementById('helper2').classList.remove('is-success'); 
+ 
     
+    }
+    const disableButton = () =>{
+        if(helper2 === "Ok!" && helper==="Ok!" && helper1==="Ok!" )return false ; 
+        return true ; 
     }
     const handleChangePrivateKey = e => {
 
@@ -41,7 +50,7 @@ function ImportWallet() {
 
             document.getElementById("helper1").classList.remove('is-danger');
             document.getElementById("helper1").classList.add('is-success');
-            setHelper1('ok !!!');
+            setHelper1('Ok!');
 
         }
 
@@ -64,7 +73,7 @@ function ImportWallet() {
 
             document.getElementById("helper").classList.remove('is-danger');
             document.getElementById("helper").classList.add('is-success');
-            setHelper('ok !!!');
+            setHelper('Ok!');
 
         }
 
@@ -76,11 +85,18 @@ function ImportWallet() {
 
         if (localStorage.getItem(e.target.value) != null) {
             setHelper2('This name already exist!');
+            document.getElementById('helper2').classList.add('is-danger'); 
         }
         else if (e.target.value.length === 0) {
             setHelper2('This field can not be empty.');
+            document.getElementById('helper2').classList.add('is-danger'); 
+
         } else {
             setHelper2('Ok!');
+            document.getElementById('helper2').classList.remove('is-danger');
+            document.getElementById('helper2').classList.add('is-success'); 
+ 
+
         }
     }
 
@@ -121,20 +137,22 @@ function ImportWallet() {
                 onChange={handleChangeName}
                 helper={helper2}
                 icon="registered"
-                placeholder="Name" />
+                placeholder="Name"
+                helperId="helper2" />
 
             <Input className=" is-small" value={password}
                 onChange={handleChangePassword}
                 helper={helper}
                 icon="lock"
                 placeholder="Password"
-                id="helper"
+                helperId="helper"
             />
 
             <Textarea value={privateKey} onChange={handleChangePrivateKey} helper={helper1} />
 
             <div className="has-text-centered download_btn_margin">
                 <button onClick={handleImport}
+                disabled={disableButton()}
                     className="button is-info is-small is-fullwidth has-text-weight-bold" > Import </button>
             </div>
 
