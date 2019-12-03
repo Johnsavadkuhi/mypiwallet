@@ -22,14 +22,11 @@ function Send(props) {
     const [password, setPassword] = useState('');
     const [passHelper, setPassHelper] = useState('Enter wallet password.');
 
-
-
     useEffect(() => {
 
-        const { address } = localStorage.getItem(props.name);
+        const { address } = JSON.parse(localStorage.getItem(props.name)) ;        
 
-
-        Fetch(GET_BALANCE(address)).then(data => {
+        Fetch(GET_BALANCE(address)).then(data => {            
             const b = (Number.parseFloat(data.data.getBalance) / Number.parseFloat(1000000000000000000));
             setBalance('' + b);
         }).catch(error => {
@@ -145,27 +142,36 @@ function Send(props) {
 
     }
 
-    const handleSendClick = () => {
+    const handleSendClick =async  () => {
 
         setSelected('sending');
+        
+       const {address}  = JSON.parse(localStorage.getItem(props.name)); 
+       
+        const { data } = await Fetch(GET_TRANSACTION_COUNT(address));
+    
+        const  {privateKey} = Account.decrypt(JSON.parse(localStorage.getItem(props.name)).privateKey , password); 
 
-        //     const { data } = await Fetch(GET_TRANSACTION_COUNT(address));
-        //     const p = decrypted_privateKey.slice(2).toString();
-        //     const privateKey1 = Buffer.from(p, 'hex');
+        const p = privateKey.slice(2).toString();
+        
+        const privateKey1 = Buffer.from(p, 'hex');
+           
+         const rawTx = {
+                nonce: (data.getTransactionCount),
+                gasPrice: '0x3B9ACA00',
+                gasLimit: '0xA410',
+                to: to,
+                value: '0x' + (Number.parseFloat(piValue) * 1000000000000000000).toString(16),
+                data: '',
+                chainId: 'pchain'
+            };
 
-        //     const rawTx = {
-        //         nonce: (data.getTransactionCount),
-        //         gasPrice: '0x3B9ACA00',// '0x4A817C800'
-        //         gasLimit: '0xA410',
-        //         to: to, //'0xEA048c9D9B3D226550bDDb6515a6425153474D8b',
-        //         value: '0x' + (Number.parseFloat(piValue) * 1000000000000000000).toString(16),
-        //         data: '',
-        //         chainId: 'pchain'
-        //     };
-        //     const tx = new Tx(rawTx);
-        //     tx.sign(privateKey1);
-        //     const serializedTx = await tx.serialize();
-        //     const s = '0x' + serializedTx.toString('hex');
+            const tx = new Tx(rawTx);
+            tx.sign(privateKey1);
+            const serializedTx = await tx.serialize();
+            const s = '0x' + serializedTx.toString('hex');
+            console.log("s : " , s); 
+
         //     const transactionHash = await Fetch(SEND_RAW_TRANSACTION(s))
 
         //     setTs(transactionHash);
@@ -197,7 +203,7 @@ function Send(props) {
 
                 <button onClick={handleNextClick}
                     className="button is-info is-small is-fullwidth has-text-weight-bold" >
-                    Next
+                    Next 
                     </button>
 
             </Container>
@@ -224,7 +230,7 @@ function Send(props) {
         }
 
         {selected === 'passwordForm' &&
-        
+
             <Container header="Enter Password">
                 <PasswordForm value={password} onClick={handleSendClick} onChange={handleChangePassword} helper={passHelper} />
             </Container>
