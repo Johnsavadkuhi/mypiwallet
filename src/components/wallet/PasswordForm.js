@@ -4,16 +4,16 @@ import Input from '../container/Input';
 function PasswordForm(props) {
 
     return (<>
-            <Input className="is-small" 
+            <Input  id= {props.id} className="is-small" 
                 value={props.value}
                 onChange={props.onChange}
                 helper={props.helper}
                 icon="lock"
+                helperId={props.helperId}
                 placeholder="Password"
-                id="helper"
             />
             <div className="has-text-centered download_btn_margin">
-                <button onClick={props.onClick}
+                <button onClick={props.onClick}   disabled={props.disabled}
                     className="button is-info is-small is-fullwidth has-text-weight-bold" > Sign Transaction </button>
             </div>
     </>)
