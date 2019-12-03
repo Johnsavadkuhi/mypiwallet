@@ -191,7 +191,7 @@ export const SEND_RAW_TRANSACTION = function (input) {
         query: `
         query{
             sendRawTransaction(signedTransaction:"${input}"){
-                
+                to
                 blockNumber
                 transactionHash               
             }
