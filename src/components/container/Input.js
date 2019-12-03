@@ -6,15 +6,19 @@ function Input(props){
     <div className="control has-icons-left">
     
         <input value={props.value}
+            defaultValue={props.defaultValue}
             onChange={props.onChange}
             id={props.id}
             readOnly={props.readOnly}
-            className={props.className}
+            className={`input ${props.className}` }
             type={props.type} placeholder={props.placeholder} />
-       
-        <span className="icon is-small is-left">
+       {
+           props.icon && 
+           <span className="icon is-small is-left">
             <i className={`fa fa-${props.icon}`} aria-hidden="true"></i>
         </span>
+       }
+        
 
     </div>
 
