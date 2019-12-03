@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Send from './Send';
 import Receive from './Receive';
+import Balance from './Balance';
+import Swal from 'sweetalert2';
 
 function Unlocked(props) {
 
@@ -23,14 +25,35 @@ function Unlocked(props) {
         setSelected('wallet');
     }
 
-    const item = props.name ; 
+    const handleDeleteClick = () => {
+        Swal.fire({
+            title: "Are you sure ?",
+            text: "This action will remove the wallet from your browser.",
+            icon: 'warning',
+            cancelButtonText: 'Cancerl',
+            showConfirmButton: true,
+            showCancelButton: true,
+            confirmButtonText: "Remove",
+            confirmButtonColor: 'red'
+
+        }).then(r => {
+
+            if (r.value) 
+            {
+                console.log(localStorage.getItem(props.name))
+                localStorage.removeItem(props.name);
+                
+            }
+        })
+    }
+
 
     return (<>
-    <br/>
+        <br />
 
         {
-            selected === "send" && 
-            <Send onClick={handleClose} name={item} />
+            selected === "send" &&
+            <Send onClick={handleClose} name={props.name} />
         }
 
         {
@@ -58,13 +81,15 @@ function Unlocked(props) {
 
                 <div className="card-content">
                     <div className="content">
+                        <Balance name={props.name} />
 
                     </div>
                 </div>
 
                 <footer className="card-footer">
                     <button className="is-fullwidth button  is-small ">Reload</button>
-                    <button className="button is-fullwidth is-small">Delete</button>
+                    <button onClick={handleDeleteClick}
+                        className="button is-fullwidth is-small">Delete</button>
                 </footer>
             </div>
 
@@ -74,7 +99,7 @@ function Unlocked(props) {
             selected === "receive" &&
             <Receive onClick={handleClose} />
         }
-<br/>
+        <br />
     </>)
 }
 
