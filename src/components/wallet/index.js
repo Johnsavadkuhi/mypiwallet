@@ -1,13 +1,25 @@
-import React from 'react';
+import React , {useEffect , useState} from 'react';
 import Unlocked from './Ublocked';
 
 function Wallet() {
 
+    const [keys , setKeys ]= useState([]); 
+    useEffect(()=>{
+       
+        setKeys(Object.keys(localStorage)); 
+        
+    }, [])
+
+   
+    
     return (
         <div className="container">
-            <br />
-            <Unlocked name="Wallet_1" /><br />
-
+            {
+                
+                keys.map((k )=>(   
+                 <Unlocked name={k} key={k}/> ))
+            
+            }
         </div>
     );
 }
