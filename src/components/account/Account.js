@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import loadable from '@loadable/component'
-import { GET_BALANCE } from '../../request';
-import Moneparam from '../methods_with_one_param';
 import RadioButton from '../RadioButton';
 import ImportWallet from './ImportWallet';
+import Balance from './Balance'; 
+
 const CreateAccount = loadable(() => import('./CreateWallet'),
   {
     fallback: <div>
@@ -71,7 +71,7 @@ function Account() {
         <div className="column is-9">
 
           {
-            selected === "Balance" && <Moneparam header="getBalance" request={GET_BALANCE} placeholder="Address" />
+            selected === "Balance" && <Balance/>
           }
           {
             selected === "CreateWallet" &&
