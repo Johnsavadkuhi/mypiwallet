@@ -4,8 +4,9 @@ import Input from '../container/Input';
 function PasswordForm(props) {
 
     return (<>
-            <Input className="is-small" value={props.password}
-                onChange={props.handleChangePassword}
+            <Input className="is-small" 
+                value={props.value}
+                onChange={props.onChange}
                 helper={props.helper}
                 icon="lock"
                 placeholder="Password"
@@ -13,7 +14,7 @@ function PasswordForm(props) {
             />
             <div className="has-text-centered download_btn_margin">
                 <button onClick={props.onClick}
-                    className="button is-info is-small is-fullwidth has-text-weight-bold" > Send </button>
+                    className="button is-info is-small is-fullwidth has-text-weight-bold" > Sign Transaction </button>
             </div>
     </>)
 }
