@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Unlocked from './Ublocked';
+import Imported  from './Imported';
 
 function Wallet() {
 
@@ -11,14 +11,27 @@ function Wallet() {
     }, [])
 
     return (
+       <>
+       {localStorage.length === 0 ?
         <div className="container">
+            <br/>
+            <div className="has-text-centered is-size-3 ">
+            
+             No Wallet Imported Yet. 
+
+            </div>
+       </div>
+        : 
+       <div className="container">
             {
 
                 keys.map((k) => (
-                    <Unlocked name={k} key={k} />))
+                    <Imported  name={k} key={k} />))
 
             }
         </div>
+}
+</>
     );
 }
 
