@@ -11,8 +11,9 @@ function CreateAccount(props) {
     const [helper, setHelper] = useState('Enter 8 chars as password.');
 
     const handleChange = e => {
-//09909455953 
+
         setPassword(e.target.value);
+
         if (e.target.value.length === 0) {
             setHelper('password can not be empty.');
             document.getElementById("helper").classList.add('is-danger');
@@ -79,6 +80,7 @@ function CreateAccount(props) {
         Warning.fire({}).then(result => {
             if (result.value) {
                 const element = document.createElement('a');
+                console.log("privateKEy in lin 83 : ", state.privateKey) ; 
                 const encryptedPrivatedKey = Account.encrypt(state.privateKey, password);
                 element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(encryptedPrivatedKey));
                 element.setAttribute('download', state.address);
@@ -168,7 +170,7 @@ function CreateAccount(props) {
                 :
                 <Container header="Create Wallet">
 
-                    <Input className="input is-small" value={password} onChange={handleChange} helper={helper}/>
+                    <Input id="helper" className="input is-small" value={password} onChange={handleChange} helper={helper} icon="lock" placeholder="Password"/>
                     <button onClick={handleClick}
                         disabled={!(password.length >= 8)}
                         className="button is-info is-small is-fullwidth has-text-weight-bold" > Create </button>
