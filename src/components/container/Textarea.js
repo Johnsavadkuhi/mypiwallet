@@ -7,8 +7,11 @@ function Textarea(props) {
                 <div className="control is-expanded">
                     <textarea placeholder="PrivateKey"
                         onChange={props.onChange}
-                        className="textarea  is-small has-text-grey-light"
-                        value={props.value} />
+                        defaultValue={props.defaultValue}
+                        className={`textarea  is-small ${props.className}`}
+                        value={props.value}
+                        readOnly={props.readOnly}
+                        />
                 </div>
             </div>
         </div>
