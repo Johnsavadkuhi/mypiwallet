@@ -15,7 +15,7 @@ function Send(props) {
     const [piValue, setPiValue] = useState('');
     const [balance, setBalance] = useState(0);
     const [helper, setHelper] = useState({ to: 'Enter wallet address you want send Pi to.', value: 'Enter the number of Pi to send.' })
-    const [selected, setSelected] = useState('sendForm');
+    const [selected, setSelected] = useState('transactionSent');
     const [ts , setTs] = useState({}); 
 
 
