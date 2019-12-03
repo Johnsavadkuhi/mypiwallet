@@ -3,18 +3,25 @@ import Container from '../container';
 import Input from '../container/Input';
 import Textarea from '../container/Textarea';
 import { Account } from '../../pweb3';
+import Swal from 'sweetalert2';
 
 function ImportWallet() {
 
-    const [password, setPassword] = useState("");
+    const [password, setPassword] = useState('');
     const [privateKey, setPrivateKey] = useState('');
     const [helper, setHelper] = useState('Enter 8 chars as password.');
     const [helper1, setHelper1] = useState('Enter a valid privateKey');
     const [helper2, setHelper2] = useState('Enter a name for Wallet');
     const [name, setName] = useState('');
 
-
-
+    const reset =()=>{
+        setPassword('') ; 
+        setPrivateKey ('');
+        setHelper('Enter 8 chars as password.');
+        setHelper2('Enter a name for Wallet') 
+        setName('');
+    
+    }
     const handleChangePrivateKey = e => {
 
         setPrivateKey(e.target.value)
@@ -89,6 +96,14 @@ function ImportWallet() {
             const encrypted_privateKey = Account.encrypt(privateKey, password);
             myWallet.privateKey= JSON.stringify(encrypted_privateKey) ; 
             localStorage.setItem(name, JSON.stringify(myWallet) ) ;
+
+            Swal.fire({
+                title:'Successfull!',
+                icon:'success' ,
+            }).then(()=>{
+
+                reset(); 
+            })
 
         } else {
 
