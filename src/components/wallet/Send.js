@@ -183,14 +183,11 @@ function Send(props) {
         const s = '0x' + serializedTx.toString('hex');
         setSigned(s);
         setSelected('signedTransaction');
-
-
-
     }
 
     const handleSendClick = () => {
 
-        //     const transactionHash = await Fetch(SEND_RAW_TRANSACTION(s))
+        //     const transactionHash = await Fetch(SEND_RAW_TRANSACTION(signed))
 
         //     setTs(transactionHash);
 
