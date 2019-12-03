@@ -80,8 +80,7 @@ function CreateAccount(props) {
         Warning.fire({}).then(result => {
             if (result.value) {
                 const element = document.createElement('a');
-                console.log("privateKEy in lin 83 : ", state.privateKey) ; 
-                const encryptedPrivatedKey = Account.encrypt(state.privateKey, password);
+                const encryptedPrivatedKey = JSON.stringify(Account.encrypt(state.privateKey, password));
                 element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(encryptedPrivatedKey));
                 element.setAttribute('download', state.address);
 
