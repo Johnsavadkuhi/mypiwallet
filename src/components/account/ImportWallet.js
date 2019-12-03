@@ -84,7 +84,7 @@ function ImportWallet() {
         setName(e.target.value);
 
         if (localStorage.getItem(e.target.value) != null) {
-            setHelper2('This name already exist!');
+            setHelper2('Name already exists!');
             document.getElementById('helper2').classList.add('is-danger'); 
         }
         else if (e.target.value.length === 0) {
@@ -123,7 +123,7 @@ function ImportWallet() {
 
         } else {
 
-            alert('The name is already exist.');
+            alert('Name already exists.');
 
         }
 
