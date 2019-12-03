@@ -1,11 +1,11 @@
 import React , {useState , useEffect }from 'react';
-import { GET_TRANSACTION_COUNT, GET_BALANCE, SEND_RAW_TRANSACTION } from '../../request/';
+import { GET_TRANSACTION_COUNT, GET_BALANCE } from '../../request/';
 import Fetch from '../../request/Fetch';
 
 function Balance(props) {
 
     const [balance , setBalance ] = useState(0); 
-    const [transactionOut , ] = useState(0) ; 
+    const [transactionOut ,setTransactionOut ] = useState(0) ; 
     
     useEffect(()=>{
 
@@ -17,6 +17,12 @@ function Balance(props) {
             setBalance('' + b);
         }).catch(error => {
             throw new Error(error);
+        });
+
+        Fetch(GET_TRANSACTION_COUNT(address)).then(data=>{
+        setTransactionOut(data.data.getTransactionCount)
+        }).catch(error=>{
+            throw new Error(error); 
         })
 
     } , [props.name])
