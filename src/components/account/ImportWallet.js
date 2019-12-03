@@ -3,7 +3,6 @@ import Container from '../container';
 import Input from '../container/Input';
 import Textarea from '../container/Textarea';
 import { Account } from '../../pweb3';
-import Wallet from '../wallet';
 
 function ImportWallet() {
 
