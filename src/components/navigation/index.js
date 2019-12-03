@@ -61,36 +61,6 @@ function Navigation() {
           <NavLink to="/transactions" className="navbar-item">
             Transactions
         </NavLink>
-       
-        <NavLink to="/contracts" className="navbar-item">
-            Contracts
-        </NavLink>
-        <NavLink to="/utilities" className="navbar-item">
-            Utilities
-        </NavLink>
-
-          {/* <div className="navbar-item has-dropdown is-hoverable">
-            <NavLink to="/transactions" className="navbar-link">
-              Transactions
-        </NavLink>
-
-            <div className="navbar-dropdown">
-              <NavLink to="/about" className="navbar-item">
-                About
-          </NavLink>
-              <NavLink to="/jobs" className="navbar-item">
-                Jobs
-          </NavLink>
-              <NavLink to="/contacts" className="navbar-item">
-                Contact
-          </NavLink>
-              <hr className="navbar-divider" />
-              <NavLink to="/reports" className="navbar-item">
-                Report an issue
-          </NavLink>
-            </div>
-          </div>
-           */}
         </div>
 
       </div>
