@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import loadable from '@loadable/component'
 import RadioButton from '../RadioButton';
-import ImportWallet from './ImportWallet';
-import Balance from './Balance'; 
 
-const CreateAccount = loadable(() => import('./CreateWallet'),
+const CreateWallet = loadable(() => import('./CreateWallet'),
   {
     fallback: <div>
       <progress className="progress is-small is-primary" max="100">15%</progress>
@@ -14,7 +12,26 @@ const CreateAccount = loadable(() => import('./CreateWallet'),
     </div>
   });
 
+  const ImportWallet = loadable(() => import('./ImportWallet'),
+  {
+    fallback: <div>
+      <progress className="progress is-small is-primary" max="100">15%</progress>
+      <progress className="progress is-danger" max="100">30%</progress>
+      <progress className="progress is-medium is-dark" max="100">45%</progress>
+      <progress className="progress is-large is-info" max="100">60%</progress>
+    </div>
+  });
 
+  const Balance  = loadable(() => import('./Balance'),
+  {
+    fallback: <div>
+      <progress className="progress is-small is-primary" max="100">15%</progress>
+      <progress className="progress is-danger" max="100">30%</progress>
+      <progress className="progress is-medium is-dark" max="100">45%</progress>
+      <progress className="progress is-large is-info" max="100">60%</progress>
+    </div>
+  });
+  
 function Account() {
   const [selected, setSelected] = useState("Balance");
 
@@ -76,7 +93,7 @@ function Account() {
           {
             selected === "CreateWallet" &&
 
-            <CreateAccount />
+            <CreateWallet />
 
           }
           {
