@@ -3,7 +3,8 @@ import { Account } from '../../pweb3';
 import { Toast, Warning } from '../../popup';
 import Container from '../container';
 import Input from '../container/Input';
-function CreateAccount() {
+
+function CreateWallet() {
 
     const [isExec, setIsExec] = useState(false);
     const [state, setState] = useState({ address: '', privateKey: '' });
@@ -184,4 +185,4 @@ function CreateAccount() {
 
 }
 
-export default CreateAccount; 
+export default CreateWallet; 
