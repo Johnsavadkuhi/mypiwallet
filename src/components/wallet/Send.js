@@ -107,7 +107,7 @@ function Send(props) {
 
 
         } else if (e.target.value === '0' || Number.parseFloat(e.target.value) < 0) {
-            
+
             setValueHelper('Invalid value');
             document.getElementById('valueTo').classList.add('is-danger');
             document.getElementById('valueHelperTo').classList.add('is-danger');
@@ -187,22 +187,46 @@ function Send(props) {
 
     const handleSendClick = () => {
 
-        //     const transactionHash = await Fetch(SEND_RAW_TRANSACTION(signed))
+        const beforSending = Swal.mixin({
+            customClass: {
+                
+                title : ''
+            },
+            
+        })
 
-        //     setTs(transactionHash);
 
-        //     Swal.fire({
-        //         title: 'Sent Successfully!',
-        //         text: `${piValue} sent to destination wallet`,
-        //         icon: 'success',
-        //         confirmButtonColor: '#3085d6',
-        //         cancelButtonColor: '#d33',
-        //         confirmButtonText: 'Ok'
-        //     });
+        beforSending.fire({
+            title: 'Are you Sure to Send Pi ? ',
+            text: `You won't be able to revert this! `,
+            icon: 'warning',
+            showConfirmButton: true,
+            showCancelButton: true,
+            cancelButtonText: 'Cancerl',
+            confirmButtonText: 'Agree',
 
-        //     setSelected('transactionSent');
+        }).then(async ()=>{
+            
+            setSelected('sending'); 
+            const transactionHash = await Fetch(SEND_RAW_TRANSACTION(signed))
 
-        // }
+             setTs(transactionHash);
+
+            Swal.fire({
+                title: 'Sent Successfully!',
+                text: `${piValue} sent to destination wallet`,
+                icon: 'success',
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ok'
+            });
+
+            setSelected('transactionSent');
+
+        }); 
+
+    
+        
     }
 
     return (<>
