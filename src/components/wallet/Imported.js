@@ -1,9 +1,26 @@
 import React, { useState } from 'react';
-import Send from './Send';
 import Receive from './Receive';
-import Balance from './Balance';
 import Swal from 'sweetalert2';
+import loadable from '@loadable/component'
 
+const Send = loadable(() => import('./Send'),
+  {
+    fallback: <div>
+      <progress className="progress is-small is-primary" max="100">15%</progress>
+      <progress className="progress is-danger" max="100">30%</progress>
+      <progress className="progress is-medium is-dark" max="100">45%</progress>
+      <progress className="progress is-large is-info" max="100">60%</progress>
+    </div>
+  });
+  const Balance = loadable(() => import('./Balance'),
+  {
+    fallback: <div>
+      <progress className="progress is-small is-primary" max="100">15%</progress>
+      <progress className="progress is-danger" max="100">30%</progress>
+      <progress className="progress is-medium is-dark" max="100">45%</progress>
+      <progress className="progress is-large is-info" max="100">60%</progress>
+    </div>
+  });
 function Imported(props) {
 
 
