@@ -18,7 +18,6 @@ function Navigation() {
           const $target = document.getElementById(target);
 
           // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-          console.log("target : " , $target); 
           el.classList.toggle('is-active');
           $target.classList.toggle('overlapMenu');
   
@@ -39,7 +38,7 @@ function Navigation() {
           <img src={logo} width="112" height="28" alt="logo"/>
         </NavLink>
 
-        <span role="button"  className="navbar-burger burger " aria-label="menu"
+        <span role="button"  className="navbar-burger burger  " aria-label="menu"
         aria-expanded="false" data-target="navbarBasicExample" onClick={handlClick}>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
@@ -49,7 +48,7 @@ function Navigation() {
 
       <div id="navbarBasicExample" aria-expanded="false" className="navbar-menu "  role="menu" onClick={handlMenuItemClick} >
         <div className="navbar-start"  >
-        <NavLink to="/" className="navbar-item" >
+        <NavLink to="/" className="navbar-item " >
           Account
         </NavLink>
         <NavLink to="/wallet" className="navbar-item">
