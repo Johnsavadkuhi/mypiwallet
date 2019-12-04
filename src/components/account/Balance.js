@@ -4,7 +4,7 @@ import Input from '../container/Input';
 import Fetch from '../../request/Fetch';
 import { GET_BALANCE } from '../../request';
 
-function Balance(props) {
+function Balance() {
 
     const [address, setAddress] = useState('');
     const [data, setData] = useState({});
