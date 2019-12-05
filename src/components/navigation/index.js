@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom';
 function Navigation() {
 
  const handlClick =()=>{
+   
   const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
    
     if ($navbarBurgers.length > 0) {
@@ -51,15 +52,11 @@ function Navigation() {
         <NavLink to="/" className="navbar-item " >
           Account
         </NavLink>
+
         <NavLink to="/wallet" className="navbar-item">
           Wallet
         </NavLink>
-          <NavLink to="/blocks" className="navbar-item">
-            Blocks
-          </NavLink>
-          <NavLink to="/transactions" className="navbar-item">
-            Transactions
-        </NavLink>
+         
         </div>
 
       </div>
