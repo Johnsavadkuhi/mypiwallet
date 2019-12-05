@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { GET_TRANSACTION_COUNT, GET_TRANSACTION, GET_TRANSACTION_RECEIPT, GET_TRANSACTION_FROM_BLOCK } from '../../request';
-import Moneparam from '../methods_with_one_param';
-import Mtwoparam from '../methods_with_two_param';
+// import { GET_TRANSACTION_COUNT, GET_TRANSACTION, GET_TRANSACTION_RECEIPT, GET_TRANSACTION_FROM_BLOCK } from '../../request';
+
 import RadioButton from '../RadioButton';
 
 function Transactions() {
@@ -61,7 +60,7 @@ function Transactions() {
 
         <div className="column is-9">
          
-          {
+          {/* {
             selected === "Transaction" && <Moneparam header="getTransaction" request={GET_TRANSACTION} placeholder="Transaction Hash" />
           }
 
@@ -73,7 +72,7 @@ function Transactions() {
           }
           {
             selected === "TransactionFromBlock" && <Mtwoparam header="getTransactionFromBlock" request={GET_TRANSACTION_FROM_BLOCK} placeholder="Block Number" placeholdertwo="Transaction Index" />
-          }
+          } */}
 
 </div>
         </div>
