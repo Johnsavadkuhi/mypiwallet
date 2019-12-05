@@ -35,8 +35,8 @@ function Navigation() {
 
     <nav className="navbar is-light" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
-        <NavLink className="navbar-item" to="/" style={{marginLeft:'10px'}}>
-          <img src={logo}   alt="logo" style={{height:'50px'}}/>
+        <NavLink className="navbar-item" to="/" >
+          <img src={logo} width="112" height="90"  alt="logo" />
         </NavLink>
 
         <span role="button"  className="navbar-burger burger  " aria-label="menu"
@@ -49,7 +49,10 @@ function Navigation() {
 
       <div id="navbarBasicExample" aria-expanded="false" className="navbar-menu "  role="menu" onClick={handlMenuItemClick} >
         <div className="navbar-start"  >
-        <NavLink to="/" className="navbar-item " >
+          <NavLink to="/" className="navbar-item">
+            Home
+            </NavLink>
+        <NavLink to="/account" className="navbar-item " >
           Account
         </NavLink>
 
