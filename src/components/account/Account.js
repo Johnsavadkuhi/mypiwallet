@@ -43,7 +43,7 @@ function Account() {
   return (<>
 
     <br />
-    <div className="container is-fluid">
+    <div className="container is-fluid ">
       <div className="columns has-text-grey	">
         <div className="column is-3">
           <div className="box">
