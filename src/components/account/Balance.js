@@ -42,7 +42,7 @@ function Balance() {
 
                     <div className="has-text-centered download_btn_margin">
                         <button onClick={handleBalanceClick}
-                            className="button is-info is-small is-fullwidth has-text-weight-bold" > Balance </button>
+                            className="button is-info is-outlined is-small is-fullwidth has-text-weight-bold" > Balance </button>
                     </div>
 
                 </Container>
