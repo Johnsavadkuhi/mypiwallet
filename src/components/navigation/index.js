@@ -1,5 +1,5 @@
 import React  from 'react';
-import logo from '../../images/piscan-logo.png';
+import logo from '../../images/miw.png';
 import { NavLink } from 'react-router-dom';
 
 
@@ -35,8 +35,8 @@ function Navigation() {
 
     <nav className="navbar is-light" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
-        <NavLink className="navbar-item" to="/">
-          <img src={logo} width="112" height="28" alt="logo"/>
+        <NavLink className="navbar-item" to="/" style={{marginLeft:'10px'}}>
+          <img src={logo}   alt="logo" style={{height:'50px'}}/>
         </NavLink>
 
         <span role="button"  className="navbar-burger burger  " aria-label="menu"
