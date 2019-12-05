@@ -24,11 +24,7 @@ function App() {
           <Route exact path="/" component={Account}/>
           
           <Route path="/wallet" component={Wallet}/>
-            
-            
-         
-            
-              
+                 
         </Switch>
 
       
