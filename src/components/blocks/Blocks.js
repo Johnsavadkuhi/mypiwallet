@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { GET_BLOCK, GET_BLOCK_NUMBER, GET_BLOCK_TRANSACTION_COUNT } from '../../request';
-import Mnoparma from './methods_with_no_param';
-import Moneparam from './methods_with_one_param';
+// import { GET_BLOCK, GET_BLOCK_NUMBER, GET_BLOCK_TRANSACTION_COUNT } from '../../request';
 import RadioButton from '../RadioButton';
 
 function Blocks() {
@@ -53,7 +51,7 @@ function Blocks() {
           </div>
           <div className="column is-9">
 
-            {
+            {/* {
               selected === "BlockNumber" && <Mnoparma header="getBlockNumber" request={GET_BLOCK_NUMBER}/>
             }
             {
@@ -61,7 +59,7 @@ function Blocks() {
             }
             { 
               selected === "BlockTransactionCount" && <Moneparam header="getBlockTransactionCount" request={GET_BLOCK_TRANSACTION_COUNT} placeholder="Block Number" />
-            }
+            } */}
 
           </div>
        
