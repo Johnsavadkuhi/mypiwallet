@@ -3,6 +3,7 @@ import '../style/main.scss'
 import Navigation from './navigation';
 import Account from './account/Account';
 import Wallet from './wallet'; 
+import Home from './home/Home'; 
 
 import {
   BrowserRouter as Router,
@@ -21,7 +22,8 @@ function App() {
 
         <Switch>
 
-          <Route exact path="/" component={Account}/>
+          <Route exact path="/" component={Home}/>
+          <Route  path="/account" component={Account}/>
           
           <Route path="/wallet" component={Wallet}/>
                  
