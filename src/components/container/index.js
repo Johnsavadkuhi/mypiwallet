@@ -15,7 +15,7 @@ function Container(props){
                        
                      {props.children}
 
-                    </fieldset>
+                    </fieldset> 
                    
                 </div>
             </article>
