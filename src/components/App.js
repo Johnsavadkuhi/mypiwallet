@@ -14,7 +14,7 @@ import {
 function App() {
 
   return (
-    <>
+    
       <Router >
 
         <Navigation />
@@ -34,7 +34,7 @@ function App() {
       
       </Router>
 
-    </>
+  
   );
 }
 
