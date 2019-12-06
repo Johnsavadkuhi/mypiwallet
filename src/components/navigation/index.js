@@ -10,7 +10,7 @@ function Navigation() {
   const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
    
     if ($navbarBurgers.length > 0) {
-
+      
       // Add a click event on each of them
       $navbarBurgers.forEach( el => {
   
