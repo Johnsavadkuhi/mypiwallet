@@ -23,7 +23,7 @@ function Home(props) {
                                     You can create a new Wallet with entering a password to encrypt the privateKey
                                     for increasing the security of using this wallet interface.
                       
-          </p>
+                                </p>
                                 <p className="subtitle is-family-monospace">
                                     <a href="/account" > Create Wallet </a>
                                 </p>
