@@ -1,6 +1,5 @@
 import React from 'react';
-import logo from '../../images/miw.png';
-import { height } from 'dom-helpers';
+// import logo from '../../images/t.png';
 
 
 function Home(props) {
@@ -25,19 +24,22 @@ function Home(props) {
               for increasing the security of using this wallet interface. 
 
           </p>
-          <p className="subtitle">
+          <p className="subtitle is-family-monospace">
               <a href="/account" > Create Wallet </a>
           </p>
         </article>
       </div>
      
       <div className="tile is-parent">
-        <article className="tile is-child notification ">
+        <article className="tile is-child notification is-info">
           <p className="title is-family-monospace">Wallet </p>
          
           <p className="content is-size-5 has-text-justified is-size-6-mobile is-family-monospace">
           In Wallet you can see Balance of your wallet Transactions and also you can send Pi to another wallet.
             also you can have multiple wallets at the same time. and also you can manage the all wallets.
+          </p>
+          <p className="subtitle is-family-monospace">
+              <a href="/wallet" > Wallet </a>
           </p>
         </article>
       </div>
@@ -53,17 +55,20 @@ function Home(props) {
         For importing a wallet you should enter a name a password an privateKey Wallet.
             password is used to encrypt the privateKey and storing in browser so please Enter a strong password. 
         </p>  
+        <p className="subtitle is-family-monospace">
+              <a href="/account" > Import Wallet </a>
+          </p>
       </article>
     </div>
   </div>
 
   <div className="tile is-parent">
-    <article className="tile is-child notification">
+    <article className="tile is-child notification ">
       <div className="content">
-        <p className="title">Send</p>
+        <p className="title is-family-monospace">Send</p>
         
         {/* <figure className="image is-4by3">
-            <img src={logo} style={{width:'200px' , height:'200px'  }}alt="logo"/>
+            <img src={logo} alt="logo"/>
           </figure> */}
 
         <p className="content is-size-5 has-text-justified is-size-6-mobile is-family-monospace">
@@ -72,6 +77,9 @@ function Home(props) {
         also you can copy the singed transaction and use it later.
         for successfull sending you should wait for 1 minute for finishing the send process. 
         </p>
+        <p className="subtitle is-family-monospace">
+              <a href="/wallet" > Send </a>
+          </p>
       </div>
     </article>
   </div>
