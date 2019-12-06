@@ -1,8 +1,9 @@
 
 async function Fetch(query) {
 
-    const response = await fetch(process.env.REACT_APP_END_POINT,
-        {
+         
+    const response = await fetch("https://46.4.199.148:5000/graphql",
+        {  
             method: 'POST', 
             body: JSON.stringify(query),
             headers: {
