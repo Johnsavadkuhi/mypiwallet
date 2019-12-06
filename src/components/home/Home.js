@@ -5,8 +5,22 @@ import React from 'react';
 function Home(props) {
     return (<>
 
-        <div className="container-fluid" style={{margin:"15px"}}>
-            <br />
+        <div className="container-fluid" style={{ margin: "15px" }}>
+
+           
+            <section className="hero is-medium  is-bold">
+                <div className="hero-body">
+                    <div className="container">
+                        <h1 className="title is-size-1">
+                            MyPiWallet.org
+                        </h1>
+                        <h2 className="subtitle">
+                            Pchain Wallet web base!
+                        </h2>
+                    </div>
+                </div>
+            </section>
+            <br/>
             <div className="tile is-ancestor ">
                 <div className="tile is-vertical is-8">
                     <div className="tile">
@@ -22,7 +36,7 @@ function Home(props) {
                                 <p className="content is-size-5 has-text-justified is-size-6-mobile is-family-monospace">
                                     You can create a new Wallet with entering a password to encrypt the privateKey
                                     for increasing the security of using this wallet interface.
-                      
+
                                 </p>
                                 <p className="subtitle is-family-monospace">
                                     <a href="/account" > Create Wallet </a>
