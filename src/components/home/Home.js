@@ -5,19 +5,19 @@ import React from 'react';
 function Home(props) {
     return (<>
 
-        <div className="container">
+        <div className="container-fluid" style={{margin:"15px"}}>
             <br />
-            <div className="tile is-ancestor">
+            <div className="tile is-ancestor ">
                 <div className="tile is-vertical is-8">
                     <div className="tile">
-                        <div className="tile is-parent is-vertical">
-                            <article className="tile is-child notification is-primary">
+                        <div className="tile is-parent is-vertical is-small">
+                            <article className="tile is-child notification">
                                 <p className="title is-family-monospace">Balance</p>
                                 <p className=" content is-size-5 has-text-justified is-size-6-mobile is-family-monospace">Enter your wallet Address to get the Wallet Balance. </p>
                                 <p className="subtitle is-family-monospace"> <a href="/account"> Balance </a> </p>
                             </article>
 
-                            <article className="tile is-child notification is-warning">
+                            <article className="tile is-child notification">
                                 <p className="title is-family-monospace">Create Wallet </p>
                                 <p className="content is-size-5 has-text-justified is-size-6-mobile is-family-monospace">
                                     You can create a new Wallet with entering a password to encrypt the privateKey
@@ -31,7 +31,7 @@ function Home(props) {
                         </div>
 
                         <div className="tile is-parent">
-                            <article className="tile is-child notification is-info">
+                            <article className="tile is-child notification ">
                                 <p className="title is-family-monospace">Wallet </p>
 
                                 <p className="content is-size-5 has-text-justified is-size-6-mobile is-family-monospace">
@@ -83,8 +83,6 @@ function Home(props) {
                         </div>
                     </article>
                 </div>
-
-
             </div>
 
         </div>
