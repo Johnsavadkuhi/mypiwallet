@@ -2,7 +2,7 @@
 async function Fetch(query) {
 
          
-    const response = await fetch("https://46.4.199.148:5000/graphql",
+    const response = await fetch("https://api.mypiwallet.org/",
         {  
             method: 'POST', 
             body: JSON.stringify(query),
