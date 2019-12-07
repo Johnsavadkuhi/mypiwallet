@@ -12,8 +12,6 @@ const style2 = {
     animation: animations.popIn
 }
 
-
-
 function Home() {
 
 
@@ -21,11 +19,11 @@ function Home() {
 
         <div className="container-fluid" style={{ margin: "15px" }}>
 
-            <section className="hero is-medium  is-bold "  >
+            <section className="hero is-medium  is-bold is-family-code"  >
                 <div className="hero-body">
 
                     <div className="container" style={style2}>
-                        <h1 className="title is-size-1 is-size-3-mobile " style={style}>
+                        <h1 className="title is-size-1 is-size-3-mobile is-family-code" style={style}>
 
                             MyPiWallet.org
                         </h1>
@@ -40,18 +38,20 @@ function Home() {
                             <div className="columns">
                                 
                                 <div className="column is-4" >
-                                    <div className="notification has-background-white has-text-justified">
-                                        <p className="is-size-6 box " style={style2}>
+                                    <div className="notification has-background-white has-text-justified is-family-code">
+                                        <p className="is-size-6 box ">
 
-                                            <strong>MyPiWallet.org</strong> provides a way to 
-                                            <a style={{textDecoration:'none'}} className="has-text-info" href="/account"><strong> Create Wallet</strong> </a>
+                                            <strong className="has-text-black ">MyPiWallet.org </strong><hr/> 
+                                            <p className="has-text-grey" style={{wordSpacing:'-4px' , textJustify: 'distribute' , textAlignLeft :'left' }}>
+                                            Provides a way to 
+                                            <a style={{textDecoration:'none' , wordSpacing:'-4px'}} className="has-text-info" href="/account"><strong> create wallet</strong> </a>
                                             and Import Wallet,
                                             after creation you can import it for importing you should Enter a name and password
-                                             and privateKey at the End.in 
-                                             <a style={{textDecoration:'none'}} className="has-text-info" href="/wallet"><strong> Wallet </strong> </a> 
+                                             and privateKey at the End,in 
+                                             <a style={{textDecoration:'none'}} className="has-text-info" href="/wallet"><strong> wallet </strong> </a> 
                                              sending you can send pi to another Wallet. and also you can see the 
-                                             <a style={{textDecoration:'none'}} className="has-text-info" href="/account"><strong> Wallet Balance</strong> </a>.
-                                            
+                                             <a style={{textDecoration:'none'}} className="has-text-info" href="/account"><strong> wallet balance.</strong> </a>
+                                             </p>
                                             
                                         </p>
                                     </div>
@@ -59,15 +59,16 @@ function Home() {
                                 </div>
 
 
-                                <div className="column is-4">
+                                <div className="column is-4" style={style2}>
                                     <div className="notification has-background-white has-text-justified is-danger ">
                                         <p className="is-size-6 box  ">
-                                            <strong className="has-text-danger">PrivateKey : </strong>
-                                             pchain privateKey starts with 0x and hash 64 characters without 0x 
+                                            <strong className="has-text-black">PrivateKey  </strong><hr/>
+                                            <p className="has-text-grey">
+                                             Pchain privateKey starts with 0x and has 64 characters without 0x 
                                              and is used to sign a transaction 
                                              when you send a transaction to pchain network at the first time, you should sign 
                                              the transaction with privateKey and then send the transaction to pchain network. 
-                                             
+                                             </p>
                                             
                                         </p>
                                     </div>
@@ -76,12 +77,14 @@ function Home() {
 
 
 
-                                <div className="column is-4">
+                                <div className="column is-4"  style={style2}>
                                     <div className="notification has-background-white has-text-justified is-danger ">
                                         <p className="is-size-6 box  ">
-                                            <strong className="has-text-danger">Password : </strong> 
+                                            <strong className="has-text-black">Password</strong> <hr/>
+                                            <p className="has-text-grey">
                                             is used to encrypt the wallet privateKey, you should store password in a safe place 
                                             because MyPiWallet.org can not recover your password. 
+                                            </p>
                                         </p>
                                     </div>
 
