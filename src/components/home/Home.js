@@ -1,6 +1,7 @@
 import React from 'react';
 // import { AnimateOnChange } from 'react-animation'
 import { animations, easings } from 'react-animation'
+import logo from '../../images/logo1.png';
 
 const style = {
     animation: `pop-in ${easings.easeOutExpo} 500ms forwards`
@@ -19,9 +20,11 @@ function Home() {
 
         <div className="container-fluid" style={{ margin: "15px" }}>
 
-            <section className="hero is-medium  is-bold is-family-code"  >
+            <section className="hero is-medium is-family-code"  >
+            
                 <div className="hero-body">
-
+                
+                    
                     <div className="container" style={style2}>
                         <h1 className="title is-size-1 is-size-3-mobile is-family-code" style={style}>
 
