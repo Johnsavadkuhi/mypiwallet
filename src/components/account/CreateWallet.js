@@ -4,7 +4,7 @@ import { Toast, Warning } from '../../popup';
 import Container from '../container';
 import Input from '../container/Input';
 
-function CreateWallet() {
+function CreateWallet(props) {
 
     const [isExec, setIsExec] = useState(false);
     const [state, setState] = useState({ address: '', privateKey: '' });
@@ -110,7 +110,7 @@ function CreateWallet() {
         <>
             {isExec ?
                 <>
-                    <article className="message is-light">
+                    <article className="message is-light" style={props.style}>
                         <div className="message-header">
                             <code className="is-size-5 is-size-6-mobile has-text-grey-dark"> Account </code>
                             <button className="delete" aria-label="delete" onClick={handleClose}></button>
@@ -168,7 +168,7 @@ function CreateWallet() {
                 </>
 
                 :
-                <Container header="Create Wallet">
+                <Container header="Create Wallet" style={props.style}>
 
                     <Input id="helper" className="input is-small" value={password} onChange={handleChange} helper={helper} icon="lock" placeholder="Password"/>
                     <button onClick={handleClick}
