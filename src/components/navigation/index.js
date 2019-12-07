@@ -69,7 +69,7 @@ function Navigation() {
                 <span href=" " className="navbar-link">
                   English
               </span>
-              =  
+              
             </div>
           </div>
         </div>
