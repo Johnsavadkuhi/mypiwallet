@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import loadable from '@loadable/component'
 import RadioButton from '../RadioButton';
+import { animations } from 'react-animation';
+
+const style = {
+    animation: animations.popIn
+}
 
 const CreateWallet = loadable(() => import('./CreateWallet'),
   {
@@ -8,7 +13,6 @@ const CreateWallet = loadable(() => import('./CreateWallet'),
       <progress className="progress is-small is-primary" max="100">15%</progress>
       <progress className="progress is-danger" max="100">30%</progress>
       <progress className="progress is-medium is-dark" max="100">45%</progress>
-      <progress className="progress is-large is-info" max="100">60%</progress>
     </div>
   });
 
@@ -18,7 +22,6 @@ const CreateWallet = loadable(() => import('./CreateWallet'),
       <progress className="progress is-small is-primary" max="100">15%</progress>
       <progress className="progress is-danger" max="100">30%</progress>
       <progress className="progress is-medium is-dark" max="100">45%</progress>
-      <progress className="progress is-large is-info" max="100">60%</progress>
     </div>
   });
 
@@ -48,7 +51,7 @@ function Account() {
         <div className="column is-3">
           <div className="box">
             <p className="title is-5">Select a Method -> </p>
-            <RadioButton
+            <RadioButton 
               changed={radioChangeHandler}
               isSelected={selected === "Balance"}
               name="answer"
@@ -88,18 +91,18 @@ function Account() {
         <div className="column is-9">
 
           {
-            selected === "Balance" && <Balance/>
+            selected === "Balance" && <Balance style={style}/>
           }
           {
             selected === "CreateWallet" &&
 
-            <CreateWallet />
+            <CreateWallet style={style}/>
 
           }
           {
             selected === "ImportWallet" &&
 
-            <ImportWallet  />
+            <ImportWallet  style={style} />
 
           }
           {/* 
