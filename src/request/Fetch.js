@@ -1,7 +1,6 @@
 
 async function Fetch(query) {
-
-         
+    
     const response = await fetch("https://api.mypiwallet.org/",
         {  
             method: 'POST', 
