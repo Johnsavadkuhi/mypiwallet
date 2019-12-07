@@ -22,7 +22,7 @@ function Navigation() {
           el.classList.toggle('is-active');
           $target.classList.toggle('overlapMenu');
   
-      });
+      }); 
     }  
   }
 
