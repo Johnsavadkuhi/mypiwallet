@@ -5,7 +5,7 @@ import Textarea from '../container/Textarea';
 import { Account } from '../../pweb3';
 import Swal from 'sweetalert2';
 
-function ImportWallet() {
+function ImportWallet(props) {
 
     const [password, setPassword] = useState('');
     const [privateKey, setPrivateKey] = useState('');
@@ -131,7 +131,7 @@ function ImportWallet() {
 
     return (
 
-        <Container header="Import Wallet">
+        <Container header="Import Wallet" style={props.style}>
 
             <Input className=" is-small" value={name}
                 onChange={handleChangeName}
