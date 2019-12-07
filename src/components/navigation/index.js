@@ -36,7 +36,7 @@ function Navigation() {
     <nav className="navbar is-light" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
         <NavLink className="navbar-item" to="/" >
-          <img src={logo} width="112" height="90" alt="logo" />
+          <img src={logo} alt="logo" />
         </NavLink>
 
         <span role="button" className="navbar-burger burger  " aria-label="menu"
@@ -62,22 +62,27 @@ function Navigation() {
 
         </div>
 
-        <div className="navbar-end">
+        <div className="navbar-end" >
           <div className="navbar-item">
-              
-              <div class="navbar-item has-dropdown">
-                <span href=" " className="navbar-link">
-                  English
+
+            <div class="navbar-item has-dropdown">
+              <span href=" " className="navbar-link">
+                English
               </span>
-              
             </div>
+            <a href="https://github.com/johnsavadkuhi/mypiwallet"
+            target="_blank" rel="noopener noreferrer"
+            className="button is-light" >
+
+              <span className="icon is-large">
+                <i className="fa fa-github"></i>
+              </span>
+              <span>GitHub</span>
+            </a>
           </div>
         </div>
       </div>
     </nav>
-
-
-
   </>)
 }
 
