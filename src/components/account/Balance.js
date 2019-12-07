@@ -4,7 +4,7 @@ import Input from '../container/Input';
 import Fetch from '../../request/Fetch';
 import { GET_BALANCE } from '../../request';
 
-function Balance() {
+function Balance(props) {
 
     const [address, setAddress] = useState('');
     const [data, setData] = useState({});
@@ -35,7 +35,7 @@ function Balance() {
                 </div>
             </div>
                 :
-                <Container header="Get Balance" >
+                <Container header="Get Balance" style={props.style}>
 
                     <Input className="is-small" placeholder="Address" value={address}
                         onChange={handleChangeAddress} helperId="helper" icon="address-card" />
