@@ -1,7 +1,6 @@
 import React from 'react';
 // import { AnimateOnChange } from 'react-animation'
 import { animations, easings } from 'react-animation'
-import logo from '../../images/logo1.png';
 
 const style = {
     animation: `pop-in ${easings.easeOutExpo} 500ms forwards`
