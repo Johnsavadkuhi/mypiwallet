@@ -65,7 +65,7 @@ function Navigation() {
         <div className="navbar-end" >
           <div className="navbar-item">
 
-            <div class="navbar-item has-dropdown">
+            <div className="navbar-item has-dropdown">
               <span href=" " className="navbar-link">
                 English
               </span>
