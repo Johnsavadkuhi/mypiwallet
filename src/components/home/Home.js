@@ -41,7 +41,7 @@ function Home() {
                                 
                                 <div className="column is-4" >
                                     <div className="notification has-background-white has-text-justified is-family-code">
-                                        <p className="is-size-6 box ">
+                                        <div className="is-size-6 box ">
 
                                             <strong className="has-text-black ">MyPiWallet.org </strong><hr/> 
                                             <p className="has-text-grey" style={{wordSpacing:'-4px' , textJustify: 'distribute' , textAlignLeft :'left' }}>
@@ -55,7 +55,7 @@ function Home() {
                                              <a style={{textDecoration:'none'}} className="has-text-info" href="/account"><strong> wallet balance.</strong> </a>
                                              </p>
                                             
-                                        </p>
+                                        </div>
                                     </div>
 
                                 </div>
@@ -63,7 +63,7 @@ function Home() {
 
                                 <div className="column is-4" style={style2}>
                                     <div className="notification has-background-white has-text-justified is-danger ">
-                                        <p className="is-size-6 box  ">
+                                        <div className="is-size-6 box  ">
                                             <strong className="has-text-black">PrivateKey  </strong><hr/>
                                             <p className="has-text-grey">
                                              Pchain privateKey starts with 0x and has 64 characters without 0x 
@@ -72,7 +72,7 @@ function Home() {
                                              the transaction with privateKey and then send the transaction to pchain network. 
                                              </p>
                                             
-                                        </p>
+                                        </div>
                                     </div>
 
                                 </div>
@@ -81,13 +81,13 @@ function Home() {
 
                                 <div className="column is-4"  style={style2}>
                                     <div className="notification has-background-white has-text-justified is-danger ">
-                                        <p className="is-size-6 box  ">
+                                        <div className="is-size-6 box  ">
                                             <strong className="has-text-black">Password</strong> <hr/>
                                             <p className="has-text-grey">
                                             is used to encrypt the wallet privateKey, you should store password in a safe place 
                                             because MyPiWallet.org can not recover your password. 
                                             </p>
-                                        </p>
+                                        </div>
                                     </div>
 
                                 </div>
